@@ -1,0 +1,96 @@
+﻿@model IEnumerable<AppLoginAspCoreHL.Models.Livro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Cadastrar">Cadastrar novo livro</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.Imagem)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.QuantidadeEstq)
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th> *@
+            @* <th>
+                @Html.DisplayNameFor(model => model.NumeroPags)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Autor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Situacao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.Imagem)
+            </td> *@
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantidadeEstq)
+            </td>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td> *@
+            @* <td>
+                @Html.DisplayFor(modelItem => item.NumeroPags)
+            </td> *@
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Situacao)
+            </td>
+            <td>
+                    <a asp-action="Atualizar" asp-route-id="@item.Id" class="btn btn-info">Editar</a>
+
+                    <a asp-action="EditImage" asp-route-id="@item.Id" class="btn btn-primary">Alterar imagem</a>
+
+                    <a asp-action="Detalhes" asp-route-id="@item.Id" class="btn btn-secondary">Detalhes</a>
+
+                    @if (item.Situacao == "H")
+                    {
+                        <a asp-action="Desabilitar" asp-route-id="@item.Id" class="btn btn-warning"
+                           onclick="return confirm('Deseja realmente desabilitar esse livro?')">Desabilitar</a>
+                    }
+                    @if(item.Situacao == "D")
+                    {
+                        <a asp-action="Habilitar" asp-route-id="@item.Id" class="btn btn-success"
+                           onclick="return confirm('Deseja realmente habilitar esse livro?')">Habilitar</a>
+                    }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

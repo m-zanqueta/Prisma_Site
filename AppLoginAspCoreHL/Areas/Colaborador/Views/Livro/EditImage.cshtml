@@ -1,0 +1,45 @@
+﻿@model AppLoginAspCoreHL.Models.Livro
+
+@{
+    ViewData["Title"] = "EditImage";
+}
+
+<h1>EditImage</h1>
+
+<h4>Livro</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditImage" asp-controller="Livro" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger" ></div>
+
+            <input asp-for="Situacao" class="form-control" type="hidden" />
+            <input asp-for="Id" class="form-control" type="hidden" />
+            <input asp-for="QuantidadeEstq" class="form-control" type="hidden" />
+            <input asp-for="Descricao" class="form-control" type="hidden" />
+            <input asp-for="NumeroPags" class="form-control" type="hidden" />
+            <input asp-for="Preco" class="form-control" type="hidden" />
+            <input asp-for="Autor" class="form-control" type="hidden" />
+            <input asp-for="categoria.id" class="form-control" type="hidden" />
+
+            <div class="form-group">
+                <label asp-for="Titulo" class="control-label"></label>
+                <input asp-for="Titulo" class="form-control" readonly="true" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="file" name="file" id="file" /> <br />
+                <span asp-validation-for="Imagem" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>

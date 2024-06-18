@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
+    <PackageReference Include="MySql.Data" Version="8.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Colaborador\Data\" />
+    <Folder Include="Areas\Colaborador\Models\" />
+    <Folder Include="wwwroot\BancoDeDados\" />
+    <Folder Include="wwwroot\css\img\" />
+    <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\resources\lib\bootstrap-ecommerce-uikit\.DS_Store" />
+    <None Include="wwwroot\resources\lib\bootstrap-ecommerce-uikit\css\.DS_Store" />
+    <None Include="wwwroot\resources\lib\bootstrap-ecommerce-uikit\ui-design\.DS_Store" />
+    <None Include="wwwroot\resources\lib\bootstrap-ecommerce-uikit\ui-design\icons\.DS_Store" />
+    <None Include="wwwroot\resources\lib\bootstrap-ecommerce-uikit\ui-design\icons\32x32-transparent\.DS_Store" />
+    <None Include="wwwroot\resources\lib\bootstrap-ecommerce-uikit\ui-design\icons\64x64-transparent\.DS_Store" />
+    <None Include="wwwroot\resources\lib\bootstrap-ecommerce-uikit\ui-design\icons\64x64-white\.DS_Store" />
+    <None Include="wwwroot\resources\lib\bootstrap-ecommerce-uikit\ui-design\icons\svg\.DS_Store" />
+    <None Include="wwwroot\resources\lib\bootstrap-ecommerce-uikit\ui-design\shots\.DS_Store" />
+    <None Include="wwwroot\resources\lib\bootstrap-ecommerce-uikit\ui-ecommerce\fonts\fontawesome\.DS_Store" />
+    <None Include="wwwroot\resources\lib\bootstrap-ecommerce-uikit\ui-ecommerce\sass\.DS_Store" />
+    <None Include="wwwroot\resources\lib\bootstrap-ecommerce-uikit\ui-ecommerce\sass\ui-assets\helpers\.DS_Store" />
+  </ItemGroup>
+
+</Project>

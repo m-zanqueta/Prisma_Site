@@ -1,0 +1,43 @@
+﻿@model IEnumerable<AppLoginAspCoreHL.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<h1>Clentes</h1>
+@* <p class="btn btn-outline-primary" role="button">
+<a asp-action="Cadastrar">
+<span class="fas fa-user-plus" title="Cadastro" aria-hidden="true"></span>
+<span>Cadastrar</span>
+</a>
+</p> *@
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(model => model.First().Id)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.First().Nome)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.First().CPF)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.First().Telefone)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.First().Login)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.First().Senha)</th>
+
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Cliente cliente in Model)
+            {
+                <tr>
+                    <th scope="row">@cliente.Id</th>
+                    <td>@cliente.Nome</td>
+                    <td>@cliente.CPF</td>
+                    <td>@cliente.Telefone</td>
+                    <td>@cliente.Login</td>
+                    <td>@cliente.Senha</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

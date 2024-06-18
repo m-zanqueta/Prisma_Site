@@ -1,0 +1,40 @@
+﻿@model IEnumerable<AppLoginAspCoreHL.Models.CategoriaLiv>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Cadastrar">Cadastrar nova categoria</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nome)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                    <a asp-action="Atualizar" asp-controller="Categoria" asp-route-id="@item.id" class="btn btn-info">Editar</a>
+            </td>
+                
+        </tr>
+}
+    </tbody>
+</table>

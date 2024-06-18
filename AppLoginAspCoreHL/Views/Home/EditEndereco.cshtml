@@ -1,0 +1,60 @@
+﻿@model AppLoginAspCoreHL.Models.Endereco
+
+@{
+    ViewData["Title"] = "EditEndereco";
+}
+
+<h1>EditEndereco</h1>
+
+<h4>Endereco</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditEndereco">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <input asp-for="id" class="form-control" type="hidden"/>
+
+            <div class="form-group">
+                <label asp-for="estado.uf" class="control-label"></label>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.estado.uf, ViewBag.ListaEstados as SelectList, "Selecione o Estado",
+                             htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="cep" class="control-label"></label>
+                <input asp-for="cep" class="form-control cep" />
+                <span asp-validation-for="cep" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="bairro" class="control-label"></label>
+                <input asp-for="bairro" class="form-control" />
+                <span asp-validation-for="bairro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rua" class="control-label"></label>
+                <input asp-for="rua" class="form-control" />
+                <span asp-validation-for="rua" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="logradouro" class="control-label"></label>
+                <input asp-for="logradouro" class="form-control" />
+                <span asp-validation-for="logradouro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="complemento" class="control-label"></label>
+                <input asp-for="complemento" class="form-control" />
+                <span asp-validation-for="complemento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

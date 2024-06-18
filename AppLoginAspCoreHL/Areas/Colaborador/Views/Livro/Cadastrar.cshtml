@@ -1,0 +1,67 @@
+﻿@model AppLoginAspCoreHL.Models.Livro
+
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<h1>Cadastrar</h1>
+
+<h4>Livro</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Cadastrar" asp-controller="Livro" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Titulo" class="control-label"></label>
+                <input asp-for="Titulo" class="form-control" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Autor" class="control-label"></label>
+                <input asp-for="Autor" class="form-control" />
+                <span asp-validation-for="Autor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="categoria.id" class="control-label"></label>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.categoria.id, ViewBag.ListaCategorias as SelectList, "Selecione a Categoria",
+                             htmlAttributes: new { @class = "form-control" })
+                </div>
+                <span asp-validation-for="categoria.id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="file" name="file" id="file" /> <br />
+                <span asp-validation-for="Imagem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Preco" class="control-label"></label>
+                <input asp-for="Preco" class="form-control money" placeholder="00,00" type="text" />
+                <span asp-validation-for="Preco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QuantidadeEstq" class="control-label"></label>
+                <input asp-for="QuantidadeEstq" class="form-control" />
+                <span asp-validation-for="QuantidadeEstq" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger" name="Descrição"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="NumeroPags" class="control-label"></label>
+                <input asp-for="NumeroPags" class="form-control" />
+                <span asp-validation-for="NumeroPags" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

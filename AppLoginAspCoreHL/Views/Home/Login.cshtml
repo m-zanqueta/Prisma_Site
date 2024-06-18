@@ -1,0 +1,98 @@
+﻿@model AppLoginAspCoreHL.Models.Cliente
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<header>
+    <style>
+        .login-container-prisma {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+            .login-container-prisma img {
+                max-width: 100%;
+                height: auto;
+            }
+
+        .form-control-prisma {
+            width: 350px;
+        }
+
+        .login-form-prisma {
+            max-width: 400px;
+            width: 100%;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+            .login-form-prisma h3 {
+                color: #7D95FF;
+                text-align: center;
+            }
+
+            .login-form-prisma .form-group-prisma {
+                margin-bottom: 15px;
+            }
+
+            .login-form-prisma .form-control-prisma {
+                background-color: #E1E7FF;
+                border-radius: 10px;
+                border: none;
+                padding: 10px;
+            }
+
+            .login-form-prisma .btn-prisma {
+                background-color: #7D95FF;
+                border: none;
+                padding: 10px;
+                width: 100%;
+                border-radius: 10px;
+                color: white;
+                font-size: 16px;
+            }
+
+                .login-form-prisma .btn-prisma:hover {
+                    background-color: #5c74d8;
+                }
+
+            .login-form-prisma a {
+                color: #0000EE;
+            }
+
+    </style>
+</header>
+
+<body>
+    <main role="main">
+        <div class="container login-container-prisma">
+
+            <div class="login-form-prisma">
+                <h3>Login</h3>
+                @if (ViewData["MSG_E"] != null)
+                {
+                    <p class="alert alert-danger">@Html.Raw(ViewData["MSG_E"])</p>
+                }
+                <form method="post">
+                    <div class="form-group-prisma">
+                        <input asp-for="Login" class="form-control-prisma" placeholder="Nome ou email" type="email">
+                    </div>
+                    <div class="form-group-prisma">
+                        <input asp-for="Senha" class="form-control-prisma" placeholder="Senha" type="password">
+                    </div>
+                    <div class="form-group-prisma">
+                        <button type="submit" class="btn-prisma">Acessar</button>
+                    </div>
+                </form>
+                <p class="text-center">Não tem cadastro? <a href="@Url.Action("Cadastrar", "Home")">Clique Aqui</a></p>
+            </div>
+        </div>
+    </main>
+</body>
