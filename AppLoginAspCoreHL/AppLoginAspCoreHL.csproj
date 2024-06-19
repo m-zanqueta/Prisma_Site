@@ -18,7 +18,8 @@
     <Folder Include="Areas\Colaborador\Models\" />
     <Folder Include="wwwroot\BancoDeDados\" />
     <Folder Include="wwwroot\css\img\" />
-    <Folder Include="wwwroot\Images\" />
+    <Folder Include="wwwroot\img\Livros\" />
+    <Folder Include="wwwroot\img\Principal\" />
   </ItemGroup>
 
   <ItemGroup>
