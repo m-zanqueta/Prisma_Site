@@ -19,6 +19,8 @@ builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddScoped<ILivroRepository, LivroRepository>();
 builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
 builder.Services.AddScoped<IItemRepository, ItensRepository>();
+builder.Services.AddScoped<IPesquisaRepository, PesquisaRepository>();
+
 
 
 builder.Services.AddScoped<AppLoginAspCoreHL.Libraries.Sessao.Sessao>();

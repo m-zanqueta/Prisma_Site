@@ -35,10 +35,22 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex" role="search">
+
+
+
+                    @* <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="O que você está procurando?" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    </form> *@
+
+
+
+                    <form asp-controller="Home" asp-action="Search" method="get" class="d-flex" role="search">
+                        <input type="text" name="searchString" placeholder="Pesquisar livros..." />
+                        <input type="submit" value="Pesquisar" />
                     </form>
+
+
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="Colaborador" asp-controller="Home" asp-action="Login">Administrador</a>
                     </li>

@@ -1,0 +1,44 @@
+﻿@model List<PesquisaLivro>
+
+@{
+    ViewData["Title"] = "Resultado da Pesquisa";
+}
+
+<h1>Resultado da Pesquisa</h1>
+
+<form asp-controller="Home" asp-action="Search" method="get">
+    <div class="form-group">
+        <label for="searchString">Pesquisar Livro:</label>
+        <input type="text" id="searchString" name="searchString" class="form-control" value="@ViewBag.CurrentFilter">
+    </div>
+    <button type="submit" class="btn btn-primary">Pesquisar</button>
+</form>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Descrição</th>
+                <th>Autor</th>
+                <th>Categoria</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var livro in Model)
+            {
+                <tr>
+                    <td>@livro.Titulo_liv</td>
+                    <td>@livro.Desc_liv</td>
+                    <td>@livro.Autor_liv</td>
+                    <td>@livro.Nm_cat</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nenhum livro encontrado.</p>
+}

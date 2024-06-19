@@ -7,6 +7,7 @@ using AppLoginAspCoreHL.Repository;
 using AppLoginAspCoreHL.Repository.Contract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using MySql.Data.MySqlClient;
 using System.Diagnostics;
 
 namespace AppLoginAspCoreHL.Controllers
@@ -20,8 +21,11 @@ namespace AppLoginAspCoreHL.Controllers
         private CookieCarrinhoCompra _cookieCarrinhoCompra;
         private IPedidoRepository _pedidoRepository;
         private IItemRepository _itemRepository;
+        private IPesquisaRepository _pesquisaRepository;
 
-        public HomeController(IClienteRepository clienteRepository, LoginCliente loginCliente, IEnderecoRepository enderecoRepository, CookieCarrinhoCompra cookieCarrinhoCompra, ILivroRepository livroRepository, IPedidoRepository pedidoRepository, IItemRepository itemRepository)
+        
+
+        public HomeController(IClienteRepository clienteRepository, LoginCliente loginCliente, IEnderecoRepository enderecoRepository, CookieCarrinhoCompra cookieCarrinhoCompra, ILivroRepository livroRepository, IPedidoRepository pedidoRepository, IItemRepository itemRepository, IPesquisaRepository pesquisaRepository)
         {
             _clienteRepository = clienteRepository;
             _loginCliente = loginCliente;
@@ -30,6 +34,7 @@ namespace AppLoginAspCoreHL.Controllers
             _livroRepository = livroRepository;
             _pedidoRepository = pedidoRepository;
             _itemRepository = itemRepository;
+            _pesquisaRepository = pesquisaRepository;
         }
 
         public IActionResult Index()
@@ -203,6 +208,46 @@ namespace AppLoginAspCoreHL.Controllers
         public IActionResult DetalhesPedido()
         {
             return View();
+        }
+        //public IActionResult Search(string searchString)
+        //{
+        //    var livros = new List<PesquisaLivro>();
+
+        //    if (!string.IsNullOrEmpty(searchString))
+        //    {
+        //        using (MySqlConnection conexao = new MySqlConnection(_connectionString))
+        //        {
+        //            conexao.Open();
+        //            string query = "SELECT titulo_liv, Desc_liv, Autor_liv, nm_cat FROM pesquisaLivro WHERE titulo_liv LIKE @search OR Desc_liv LIKE @search OR Autor_liv LIKE @search OR nm_cat LIKE @search";
+        //            using (MySqlCommand cmd = new MySqlCommand(query, conexao))
+        //            {
+        //                cmd.Parameters.AddWithValue("@search", "%" + searchString + "%");
+
+        //                using (MySqlDataReader reader = cmd.ExecuteReader())
+        //                {
+        //                    while (reader.Read())
+        //                    {
+        //                        var livro = new PesquisaLivro
+        //                        {
+        //                            Titulo_liv = reader["titulo_liv"].ToString(),
+        //                            Desc_liv = reader["Desc_liv"].ToString(),
+        //                            Autor_liv = reader["Autor_liv"].ToString(),
+        //                            Nm_cat = reader["nm_cat"].ToString()
+        //                        };
+        //                        livros.Add(livro);
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+
+        //    return View(livros);
+        //}
+        [HttpGet]
+        public IActionResult Search(string searchString)
+        {
+            var livros = _pesquisaRepository.PesquisarLivros(searchString);
+            return View(livros);
         }
     }
 }
