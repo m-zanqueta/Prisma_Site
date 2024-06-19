@@ -82,10 +82,7 @@ Horario_ped datetime,
 Valor double,
 foreign key (Id_usu) references usuario (Id_usu)
 );
-insert into pedido values (default, 1, "2012/05/12 23:00:00", 0);
-select Id_ped from Pedido order by Id_ped desc limit 1;
-select * from pedido;
-drop table pedido;
+
 create table itens_pedido(
 Id_ItemPed int primary key auto_increment,
 Id_ped int not null,
@@ -95,10 +92,7 @@ VlTotal double not null,
 foreign key (Id_liv) references livros (Id_liv),
 foreign key (Id_ped) references pedido (Id_ped)
 );
-drop table itens_pedido;
-insert into itens_pedido values(default, 1, 1, 2, 20.00);
-insert into itens_pedido values(default, 1, 2, 1, 30.00);
-insert into itens_pedido values(default, 2, 3, 4, 100.00);
+
  
 select VlTotal from itens_pedido where Id_ped = 2;
 update pedido set Valor=30.22 where id_ped=1;
@@ -202,4 +196,3 @@ select * from livros
 select * from livros as t1 inner join categoria as t2 where t1.Id_cat = t2.Id_cat;
 update livros set Situacao_liv = "D" where Id_liv=1;
 truncate livros
-
