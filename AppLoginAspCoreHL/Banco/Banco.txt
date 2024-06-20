@@ -4,12 +4,13 @@ use dbLivrariaTCC;
 
 create view pesquisaLivro 
 as select
+livros.Id_liv,
 livros.titulo_liv,
 livros.Desc_liv,
 livros.Autor_liv,
 categoria.nm_cat
 from livros inner join categoria on livros.Id_cat = categoria.Id_CAT;
-
+drop view pesquisaLivro;
 
 
 create table estado(
@@ -83,6 +84,12 @@ Valor double,
 foreign key (Id_usu) references usuario (Id_usu)
 );
 
+insert into pedido values (default, 1, CURRENT_TIMESTAMP(), 0);
+
+
+select Id_ped from Pedido order by Id_ped desc limit 1;
+select * from pedido;
+drop table pedido;
 create table itens_pedido(
 Id_ItemPed int primary key auto_increment,
 Id_ped int not null,
@@ -92,13 +99,38 @@ VlTotal double not null,
 foreign key (Id_liv) references livros (Id_liv),
 foreign key (Id_ped) references pedido (Id_ped)
 );
+drop table itens_pedido;
+insert into itens_pedido values(default, 1, 1, 2, 20.00);
+insert into itens_pedido values(default, 1, 2, 1, 30.00);
+insert into itens_pedido values(default, 2, 3, 4, 100.00);
 
+insert into itens_pedido values(default, 8, 2, 2, "91,8");
+
+
+select * from pedido  as t1 
+inner join itens_pedido as t2 on t1.Id_ped = 1 and t2.Id_ped = 1;
+
+select * from itens_pedido as t1 
+inner join pedido as t2 on t1.Id_ped = t2.Id_ped
+inner join livros as t3 on t1.Id_liv = t3.Id_liv
+inner join usuario as t4 on t2.Id_usu = t4.Id_usu where t2.Id_usu = 1 and t2.Id_ped = 6; 
+
+
+select * from itens_pedido as t1 
+inner join pedido as t2 on t1.Id_ped = t2.Id_ped
+inner join livros as t3 on t1.Id_liv = t3.Id_liv
+inner join usuario as t4 on t2.Id_usu = t4.Id_usu where t2.Id_usu = 1;
+
+
+select * from pedido as t1 inner join itens_pedido as t2 where t1.Id_ped = 6;
+select * from itens_pedido;
+select * from pedido;
  
 select VlTotal from itens_pedido where Id_ped = 2;
 update pedido set Valor=30.22 where id_ped=1;
 select * from pedido as t1 inner join itens_pedido as t2 where t1.Id_ped=6 and t2.Id_ped=6;
  
-
+select * from usuarios;
 drop table itens_pedido ;
 select * from itens_pedido as T1
 inner join pedido T2 on T1.Id_ped = T2.Id_ped;
