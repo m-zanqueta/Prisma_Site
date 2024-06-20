@@ -33,10 +33,14 @@
                     <td>@livro.Desc_liv</td>
                     <td>@livro.Autor_liv</td>
                     <td>@livro.Nm_cat</td>
+                    <td>
+                        <a asp-action="Detalhes" asp-controller="Home" asp-route-id="@livro.Id_liv" class="btn btn-info">Detalhes</a>
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
+
 }
 else
 {

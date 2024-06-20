@@ -23,7 +23,7 @@ namespace AppLoginAspCoreHL.Repository
                 using (var conexao = new MySqlConnection(_conexaoMySQL))
                 {
                     conexao.Open();
-                    string query = "SELECT titulo_liv, Desc_liv, Autor_liv, nm_cat FROM pesquisaLivro WHERE titulo_liv LIKE @search OR Desc_liv LIKE @search OR Autor_liv LIKE @search OR nm_cat LIKE @search";
+                    string query = "SELECT Id_liv, titulo_liv, Desc_liv, Autor_liv, nm_cat FROM pesquisaLivro WHERE titulo_liv LIKE @search OR Desc_liv LIKE @search OR Autor_liv LIKE @search OR nm_cat LIKE @search";
                     using (MySqlCommand cmd = new MySqlCommand(query, conexao))
                     {
                         cmd.Parameters.AddWithValue("@search", "%" + searchString + "%");
@@ -34,6 +34,7 @@ namespace AppLoginAspCoreHL.Repository
                             {
                                 var livro = new PesquisaLivro
                                 {
+                                    Id_liv = (Int32)reader["Id_liv"],
                                     Titulo_liv = reader["titulo_liv"].ToString(),
                                     Desc_liv = reader["Desc_liv"].ToString(),
                                     Autor_liv = reader["Autor_liv"].ToString(),
@@ -45,7 +46,6 @@ namespace AppLoginAspCoreHL.Repository
                     }
                 }
             }
-
             return livros;
         }
     }

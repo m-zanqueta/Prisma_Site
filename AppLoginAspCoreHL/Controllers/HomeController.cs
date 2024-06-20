@@ -155,7 +155,8 @@ namespace AppLoginAspCoreHL.Controllers
                     Id = id,
                     QuantidadeEstq = 1,
                     Imagem = produto.Imagem,
-                    Titulo = produto.Titulo
+                    Titulo = produto.Titulo,
+                    Preco = produto.Preco
                 };
                 _cookieCarrinhoCompra.Cadastrar(item);
                 return RedirectToAction(nameof(Carrinho));
@@ -180,8 +181,6 @@ namespace AppLoginAspCoreHL.Controllers
             Pedido mdE = new Pedido();
             ItensPedido mdI = new ItensPedido();
 
-            data = DateTime.Now.ToLocalTime();
-
             mdE.Id_usu = _loginCliente.GetCliente().Id;
             mdE.Horario_ped = data;
 
@@ -189,13 +188,14 @@ namespace AppLoginAspCoreHL.Controllers
             _pedidoRepository.Cadastrar(mdE);
             _pedidoRepository.BuscarPedidoPorId(pedido);
 
+            double valorTotalItens = 0;
             for (int i = 0; i < carrinho.Count; i++)
             {
                 mdI.Id_pedido = Convert.ToInt32(pedido.Id_pedido);
                 mdI.Id_liv = Convert.ToInt32(carrinho[i].Id);
                 mdI.QtItens = Convert.ToInt32(carrinho[i].QuantidadeEstq);
                 mdI.VlTotal = Convert.ToDouble(carrinho[i].Preco * carrinho[i].QuantidadeEstq);
-
+                valorTotalItens += mdI.VlTotal;
                 _itemRepository.Cadastrar(mdI);
             }
             _pedidoRepository.InputValor(pedido.Id_pedido);
@@ -248,6 +248,11 @@ namespace AppLoginAspCoreHL.Controllers
         {
             var livros = _pesquisaRepository.PesquisarLivros(searchString);
             return View(livros);
+        }
+        public IActionResult Detalhes(int Id)
+        {
+            Livro liv = _livroRepository.ObterLivro(Id);
+            return View(liv);
         }
     }
 }

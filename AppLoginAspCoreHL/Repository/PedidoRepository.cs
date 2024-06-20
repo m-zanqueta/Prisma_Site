@@ -44,38 +44,36 @@ namespace AppLoginAspCoreHL.Contract
             {
                 conexao.Open();
                 MySqlCommand cmd = new MySqlCommand("insert into pedido" +
-                    " values(default, @Id_usu, @Horario_ped, 0)", conexao);
+                    " values(default, @Id_usu, CURRENT_TIMESTAMP(), 0)", conexao);
 
                 cmd.Parameters.Add("@Id_usu", MySqlDbType.VarChar).Value = pedido.Id_usu;
-                cmd.Parameters.Add("Horario_ped", MySqlDbType.VarChar).Value = pedido.Horario_ped.ToString("yyyy/MM/dd");
                 cmd.ExecuteNonQuery();
                 conexao.Close();
             }
         }
 
 
-        public void InputValor(int Id)
+        public void InputValor(double valor)
         {
             using (var conexao = new MySqlConnection(_conexaoMySQl))
             {
-                double valor = 0;
-                conexao.Open();
-                MySqlCommand cmd = new MySqlCommand("select VlTotal from itens_pedido where Id_ped = @Id_ped;", conexao);
+                //conexao.Open();
+                //MySqlCommand cmd = new MySqlCommand("select VlTotal from itens_pedido where Id_ped = @Id_ped;", conexao);
 
-                cmd.Parameters.Add("@Id_ped", MySqlDbType.VarChar).Value = Id;
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                conexao.Close();
+                //cmd.Parameters.Add("@Id_ped", MySqlDbType.VarChar).Value = Id;
+                //MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                //DataTable dt = new DataTable();
+                //da.Fill(dt);
+                //conexao.Close();
 
-                foreach (DataRow dr in dt.Rows)
-                {
-                    valor += (double)(dr["VlTotal"]);
-                }
+                //foreach (DataRow dr in dt.Rows)
+                //{
+                //    valor += (double)(dr["VlTotal"]);
+                //}
 
                 conexao.Open();
                 MySqlCommand cmd2 = new MySqlCommand("update pedido set Valor=@Valor where id_ped=@id_ped;", conexao);
-                cmd.Parameters.Add("@Valor", MySqlDbType.VarChar).Value = valor;
+                cmd2.Parameters.Add("@Valor", MySqlDbType.VarChar).Value = valor;
 
             }
         }

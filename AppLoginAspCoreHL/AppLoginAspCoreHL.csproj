@@ -14,6 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Cliente\Controllers\" />
+    <Folder Include="Areas\Cliente\Data\" />
+    <Folder Include="Areas\Cliente\Models\" />
+    <Folder Include="Areas\Cliente\Views\" />
     <Folder Include="Areas\Colaborador\Data\" />
     <Folder Include="Areas\Colaborador\Models\" />
     <Folder Include="wwwroot\BancoDeDados\" />

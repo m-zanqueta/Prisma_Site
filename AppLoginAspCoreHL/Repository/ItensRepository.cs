@@ -30,7 +30,7 @@ namespace AppLoginAspCoreHL.Repository
                 cmd.Parameters.Add("@Id_ped", MySqlDbType.VarChar).Value = itensPedido.Id_pedido;
                 cmd.Parameters.Add("@Id_liv", MySqlDbType.VarChar).Value = itensPedido.Id_liv;
                 cmd.Parameters.Add("@QtItens", MySqlDbType.VarChar).Value = itensPedido.QtItens;
-                cmd.Parameters.Add("@VlTotal", MySqlDbType.VarChar).Value = itensPedido.VlTotal;
+                cmd.Parameters.Add("@VlTotal", MySqlDbType.VarChar).Value = itensPedido.VlTotal.ToString().Replace(".", "").Replace(",", "."); 
                 cmd.ExecuteNonQuery();
                 conexao.Close();
             }

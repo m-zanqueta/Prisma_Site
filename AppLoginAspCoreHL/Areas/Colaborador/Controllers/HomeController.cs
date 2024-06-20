@@ -36,6 +36,7 @@ namespace AppLoginAspCoreHL.Areas.Colaborador.Controllers
                 _loginColaborador.Login(colaboradorDB);
 
                 return new RedirectResult(Url.Action(nameof(Painel)));
+
             }
             else
             {
@@ -54,6 +55,10 @@ namespace AppLoginAspCoreHL.Areas.Colaborador.Controllers
             _loginColaborador.Logout();
             return RedirectToAction("Login", "Home");
         }
-
+        //public IActionResult RedirecionarParaForaDaArea()
+        //{
+        //    // Redireciona para uma URL externa
+        //    return Redirect("http://localhost:10279/");
+        //}
     }
 }

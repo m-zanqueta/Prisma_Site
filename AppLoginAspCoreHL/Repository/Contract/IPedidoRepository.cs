@@ -8,7 +8,7 @@ namespace AppLoginAspCoreHL.Repository.Contract
         void Cadastrar(Pedido pedido);
         void Atualizar(Pedido pedido);
         Pedido ObterPedido(int Id);
-        void InputValor(int Id);
+        void InputValor(double valor);
         void BuscarPedidoPorId (Pedido pedido);
     }
 }
