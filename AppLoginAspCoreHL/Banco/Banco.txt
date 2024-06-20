@@ -1,0 +1,198 @@
+drop database dbLivrariaTCC;
+create database dbLivrariaTCC;
+use dbLivrariaTCC;
+
+create view pesquisaLivro 
+as select
+livros.titulo_liv,
+livros.Desc_liv,
+livros.Autor_liv,
+categoria.nm_cat
+from livros inner join categoria on livros.Id_cat = categoria.Id_CAT;
+
+
+
+create table estado(
+uf_estado char(2) primary key,
+nm_estado varchar (20) not null
+);
+create table usuario(
+Id_usu int primary key auto_increment,
+Nome_usu varchar(50) not null,
+Login_usu varchar(30) not null,
+Senha_usu varchar(20) not null,
+DataNasc datetime not null,
+CPF_usu varchar(15) not null,
+tel_usu varchar(16) not null
+);
+ 
+select * from usuario;
+select * from administrador;
+ 
+create table administrador(
+Id_adm int primary key auto_increment,
+Nome_adm varchar(50) not null,
+Email_adm varchar(30) not null,
+Senha_adm varchar(20) not null,
+Tipo_adm char(1) not null
+);
+insert into administrador values(default, "Lorenzo", "lorenzo@admin.com", "admin00", "G");
+insert into administrador values(default, "Henrique", "henrique@admin.com", "admin01", "C");
+truncate administrador;
+create table endereco_usu(
+Id_usu int not null,
+cep_usu varchar(9) not null,
+uf_estado char(2) not null,
+bairro_usu varchar(40) not null,
+rua_usu varchar(40) not null,
+logradouro_usu int not null,
+complemento varchar (30),
+foreign key (Id_usu) references usuario (Id_usu),
+foreign key (uf_estado) references estado (uf_estado)
+);
+ 
+create table categoria(
+Id_cat int primary key auto_increment,
+nm_cat varchar(30) not null
+);
+insert into categoria values (default, "Tecnologia");
+insert into categoria values (default, "Administração");
+insert into categoria values (default, "Terror");
+select * from categoria;
+ 
+drop table livros;
+create table livros(
+Id_liv int primary key auto_increment,
+Id_cat int not null,
+QtEstoque int not null,
+Desc_liv varchar(250) not null,
+Image_liv varchar(200) not null,
+Nu_paginas int not null,
+Preco_liv double not null,
+Titulo_liv varchar(50) not null,
+Autor_liv varchar(50) not null,
+Situacao_liv char(1) not null,
+foreign key (Id_cat) references categoria (Id_cat)
+);
+
+create table pedido (
+Id_ped int primary key auto_increment,
+Id_usu int not null,
+Horario_ped datetime,
+Valor double,
+foreign key (Id_usu) references usuario (Id_usu)
+);
+
+create table itens_pedido(
+Id_ItemPed int primary key auto_increment,
+Id_ped int not null,
+Id_liv int not null,
+QtItens int not null,
+VlTotal double not null,
+foreign key (Id_liv) references livros (Id_liv),
+foreign key (Id_ped) references pedido (Id_ped)
+);
+
+ 
+select VlTotal from itens_pedido where Id_ped = 2;
+update pedido set Valor=30.22 where id_ped=1;
+select * from pedido as t1 inner join itens_pedido as t2 where t1.Id_ped=6 and t2.Id_ped=6;
+ 
+
+drop table itens_pedido ;
+select * from itens_pedido as T1
+inner join pedido T2 on T1.Id_ped = T2.Id_ped;
+/* insert dos estados*/
+INSERT INTO estado ( `nm_estado`, `uf_estado`) VALUES
+('Acre', 'AC'),
+('Alagoas', 'AL'),
+('Amazonas', 'AM'),
+('Amapá', 'AP'),
+('Bahia', 'BA'),
+('Ceará', 'CE'),
+('Distrito Federal', 'DF'),
+('Espírito Santo', 'ES'),
+('Goiás', 'GO'),
+('Maranhão', 'MA'),
+('Minas Gerais', 'MG'),
+('Mato Grosso do Sul', 'MS'),
+('Mato Grosso', 'MT'),
+('Pará', 'PA'),
+('Paraíba', 'PB'),
+('Pernambuco', 'PE'),
+('Piauí', 'PI'),
+('Paraná', 'PR'),
+('Rio de Janeiro', 'RJ'),
+('Rio Grande do Norte', 'RN'),
+('Rondônia', 'RO'),
+('Roraima', 'RR'),
+('Rio Grande do Sul', 'RS'),
+('Santa Catarina', 'SC'),
+('Sergipe', 'SE'),
+('São Paulo', 'SP'),
+('Tocantins', 'TO');
+select * from estado;
+DELIMITER $$
+create procedure pcd_CadUsu(
+_nome_usu varchar(50),
+_login_usu varchar(50),
+_senha_usu varchar(20),
+_DataNasc datetime,
+_cpf_usu varchar(15),
+_tel_usu varchar(16)
+)
+    BEGIN 
+        START transaction;
+            insert INTO usuario(nome_usu, login_usu, senha_usu, DataNasc, cpf_usu, tel_usu)
+            values(_nome_usu, _login_usu, _senha_usu, _datanasc, _cpf_usu, _tel_usu);
+    COMMIT;
+        ROLLBACK;
+END $$
+call pcd_CadUsu("Matheus", "matheuszanqueta20@gmail.com", "evillynrpg", "2012/02/04", "222.333.444-55", "(11) 99999-1010");
+DELIMITER $$
+CREATE PROCEDURE pcd_CadEndereco(
+    _id_usu INT,
+    _cep_usu VARCHAR(9),
+    _uf_estado CHAR(2),
+    _bairro_usu VARCHAR(40),
+    _rua_usu VARCHAR(40),
+    _logradouro_usu INT,
+    _complemento VARCHAR(30)
+)
+BEGIN
+    START TRANSACTION;
+    INSERT INTO endereco_usu(id_usu, cep_usu, uf_estado, bairro_usu, rua_usu, logradouro_usu, complemento)
+    VALUES (_id_usu, _cep_usu, _uf_estado, _bairro_usu, _rua_usu, _logradouro_usu, _complemento);
+    COMMIT;
+END $$
+call pcd_CadEndereco(1, "00000-000", "BA", "Freguesia do Ó", "Rua da ex", "12", "Casa de cima");
+SELECT * from endereco_usu as t1 INNER JOIN estado as t2 ON t1.uf_estado = t2.uf_estado where Id_usu=1;
+ 
+select * from usuario;
+select * from endereco_usu;
+ 
+DELIMITER $$
+CREATE PROCEDURE pcd_CadLivro(
+    _Id_cat int,
+    _QtEstoque int,
+    _Desc_liv varchar(250),
+    _Image_liv varchar(200),
+    _Nu_paginas int,
+    _Preco_liv double,
+    _Titulo_liv varchar(50),
+    _Autor_liv varchar(50),
+    _Situacao_liv char(1)
+)
+BEGIN
+    START TRANSACTION;
+    INSERT INTO livros(Id_cat, QtEstoque, Desc_liv, Image_liv, Nu_paginas, Preco_liv, Titulo_liv, Autor_liv, Situacao_liv)
+    VALUES (_Id_cat, _QtEstoque, _Desc_liv, _Image_liv, _Nu_paginas, _Preco_liv, _Titulo_liv, _Autor_liv, _Situacao_liv);
+    COMMIT;
+END $$
+drop procedure pcd_CadLivro;
+call pcd_CadLivro(1, 23, "Muy bueno", "tec.png", 500, 29.90, "IoT", "Fabrizio");
+ 
+select * from livros
+select * from livros as t1 inner join categoria as t2 where t1.Id_cat = t2.Id_cat;
+update livros set Situacao_liv = "D" where Id_liv=1;
+truncate livros
