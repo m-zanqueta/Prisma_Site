@@ -35,7 +35,7 @@ var cardWidth = $('.carousel-item').width();
 var scrollPosition = 0;
 
 $('.carousel-control-next').on('click', function () {
-    console.Log("next");
+    /*console.Log("next");*/
     scrollPosition = scrollPosition + cardWidth;
-    $('.carousel-inner').animate({ scrollLeft: scrollPosition }, 600);
+    $('#carousel2').animate({ scrollLeft: scrollPosition }, 600);
 });

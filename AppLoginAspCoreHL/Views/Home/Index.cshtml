@@ -6,7 +6,7 @@
 
 
 <header>
-    <script src="~/js/site.js"></script>
+ 
 </header>
 
 <main role="main" class="pb-3">
@@ -93,12 +93,10 @@
 
     <div style="margin-top:2vw; color:#7D95FF; text-shadow: 1px 1px 1px black; font-size: 2vw">Mais Vendidos</div>
     <div id="produtos1" class="carousel slide mb-10" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#produtos1" data-slide-to="0" class="active"></li>
-            <li data-target="#produtos1" data-slide-to="1"></li>
-            <li data-target="#produtos1" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" style="display:flex; padding:1em">
+        
+        
+        <div class="carousel-inner" style="display:flex; padding:1em" id=carousel2>
+           
                             @foreach (var item in Model)
                             {
                                 @if (item.Situacao == "H")
@@ -130,17 +128,14 @@
                                     </div>
                                 }
                             }
-
-
-        </div>
-        <a class="carousel-control-prev" href="#produtos1" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Anterior</span>
-        </a>
-        <a class="carousel-control-next" href="#produtos1" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Próximo</span>
-        </a>
+            <a class="carousel-control-prev" href="#produtos1" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#produtos1" role="button" data-slide="next" id="carousel-control-next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Próximo</span>
+            </a>
     </div>
 
 
@@ -298,4 +293,9 @@
     </div>
 
 </main>
+<script src="~/js/site.js"></script>
+<!-- jQuery (necessário para o Bootstrap) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+<!-- Bootstrap JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
