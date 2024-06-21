@@ -1,56 +1,9 @@
 ﻿@model IEnumerable<AppLoginAspCoreHL.Models.Livro>
 
 @{
-    ViewBag.Title = "Biblioteca";
-}
+    ViewBag.Title = "Home";
+  }
 
-<div class="">
-    <div class="row center">
-        <div class="col-lg-9">
-            <div class="row">
-                @foreach (var item in Model)
-                {
-                    @if (item.Situacao == "H")
-                    {
-                        <div class="col-lg-3 col-md-6 mb-4" style="margin:2% 4%">
-
-                            <div class="card h-100">
-
-                                @if (@item.Imagem != null)
-                                {
-                                    <img class="card-img-right flex-auto d-none d-md-block" data-src=" " alt="Thumbnail [300x300]"
-                                         style="width: 222px; height: 300px;" src="@item.Imagem" data-holder-rendered="true">
-                                }
-
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a href="@item.Imagem">@item.Titulo</a>
-                                    </h4>
-                                    <spam>Código: @item.Id</spam>
-                                </div>
-                                <div class="card-footer space-between-flex" style="width:100%">
-                                    <div>
-                                        @using (Html.BeginForm("AdicionarItem", "Home", FormMethod.Post))
-                                        {
-                                            <input type="hidden" name="id" value=@item.Id>
-                                            <input type="hidden" name="quantidade" value="1">
-                                            <button type="submit" class="btn btn-default btn-acao-primario">Adicionar</button>
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    }
-                }
-            </div>
-        </div>
-    </div>
-    </div>
-
-
-
-                                            
 
 <header>
     <script src="~/js/site.js"></script>
@@ -92,7 +45,6 @@
 
 
 
-
     <div style="margin-top:2vw; color:#7D95FF; text-shadow: 1px 1px 1px black; font-size: 2vw">Mais Vendidos</div>
     <div id="produtos1" class="carousel slide mb-10" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -101,89 +53,38 @@
             <li data-target="#produtos1" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner" style="display:flex; padding:1em">
-            @* Item 1 *@
-            <div class="carousel-item active" style="display:block; margin-right:0; flex:0 0 calc(100%/3)">
-                <div class="card" style="margin:0.5em">
-                    <div class="img-wrapper" style="max-width:100%; height:23vw">
-                        <img class="card-img-top" src="~/img/place/Place2.png" style="max-width:100%; max-height:100%" alt="Card image cap">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
+                            @foreach (var item in Model)
+                            {
+                                @if (item.Situacao == "H")
+                                {
+                                    <div class="carousel-item active" style="display:block; margin-right:0; flex:0 0 calc(100%/3); width: 15%">
 
-            @* Item 2 *@
-            <div class="carousel-item active" style="display:block; margin-right:0; flex:0 0 calc(100%/3)">
-                <div class="card" style="margin:0.5em">
-                    <div class="img-wrapper" style="max-width:100%; height:23vw">
-                        <img class="card-img-top" src="~/img/place/Place2.png" style="max-width:100%; max-height:100%" alt="Card image cap">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
 
-            @* Item 3 *@
-            <div class="carousel-item active" style="display:block; margin-right:0; flex:0 0 calc(100%/3)">
-                <div class="card" style="margin:0.5em">
-                    <div class="img-wrapper" style="max-width:100%; height:23vw">
-                        <img class="card-img-top" src="~/img/place/Place2.png" style="max-width:100%; max-height:100%" alt="Card image cap">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
+                                        <div class="card" style="margin:0.5em">
 
-            @*  Item 4 *@
-            <div class="carousel-item active" style="display:block; margin-right:0; flex:0 0 calc(100%/3)">
-                <div class="card" style="margin:0.5em">
-                    <div class="img-wrapper" style="max-width:100%; height:23vw">
-                        <img class="card-img-top" src="~/img/place/Place2.png" style="max-width:100%; max-height:100%" alt="Card image cap">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
+                                            <div class="img-wrapper" style="max-width:100%; height:23vw">
+                                                <img class="card-img-top" src="@item.Imagem" style="max-width:100%; max-height:100%" alt="Card image cap">
+                                            </div>
 
-            @* Item 5 *@
-            <div class="carousel-item active" style="display:block; margin-right:0; flex:0 0 calc(100%/3)">
-                <div class="card" style="margin:0.5em">
-                    <div class="img-wrapper" style="max-width:100%; height:23vw">
-                        <img class="card-img-top" src="~/img/place/Place2.png" style="max-width:100%; max-height:100%" alt="Card image cap">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">@item.Titulo</h5>
+                                                <p class="card-text">R$@item.Preco</p>
+                                                <div class="btn btn-primary" style="width:100%">
+                                                    <div>
+                                                        @using (Html.BeginForm("AdicionarItem", "Home", FormMethod.Post))
+                                                        {
+                                                            <input type="hidden" name="id" value=@item.Id>
+                                                            <input type="hidden" name="quantidade" value="1">
+                                                            <button type="submit" class="btn btn-default btn-acao-primario">Adicionar</button>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
 
-            @* Item 6 *@
-            <div class="carousel-item active" style="display:block; margin-right:0; flex:0 0 calc(100%/3)">
-                <div class="card" style="margin:0.5em">
-                    <div class="img-wrapper" style="max-width:100%; height:23vw">
-                        <img class="card-img-top" src="~/img/place/Place2.png" style="max-width:100%; max-height:100%" alt="Card image cap">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
 
         </div>
         <a class="carousel-control-prev" href="#produtos1" role="button" data-slide="prev">
@@ -195,7 +96,6 @@
             <span class="sr-only">Próximo</span>
         </a>
     </div>
-
 
 
 
@@ -304,14 +204,11 @@
     </div>
 
 
-
-
-
-    <div style="margin-top:2vw; color:#7D95FF; text-shadow: 1px 1px 1px black; font-size: 2vw">Saiba Mais Sobre</div>
+        
     <div class="col mx-auto text-center">
-        <img src="~/img/place/Place2.png" style="; margin-top: 2%; width:80%; height:30vw" class="img-responsive" />
+        <a href="home/SaibaMais" target="_blank"><img src="~/img/principal/8.png" style="; margin-top: 2%; width:80%; height:30vw" class="img-responsive" /></a>
     </div>
-    
+
 
 
 
