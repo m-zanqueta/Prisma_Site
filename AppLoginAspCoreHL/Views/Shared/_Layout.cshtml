@@ -9,15 +9,18 @@
     <title> Prisma - @ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/AppLoginAspCore.styles.css" asp-append-version="true" />
+
+    <style>
+     
+    </style>
 </head>
 <body>
-    <header>
+    <header >
 
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid" style="background-color:#7D95FF">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" style="margin-top:0px">
+            <div class="container-fluid" style="background-color:#7D95FF; height:130px">
                 <!-- logotipo -->
-                <a href="/Home/Index>"<img src="~/img/header_logo.png" style="height:5.5vw; margin-left:2vw; margin-right4vw" /></a>
-                <!--<a class="navbar-brand" href="#">Navbar</a>  -->
+                <a href="/Home/index">  <img src="~/img/identidade/header_logo.png" style="height:100px; margin-left:2vw; margin-right:4vw" /></a>                <!--<a class="navbar-brand" href="#">Navbar</a>  -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -36,25 +39,19 @@
                         </li>
                     </ul>
 
-
-
                     @* <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="O que você está procurando?" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Buscar</button>
                     </form> *@
 
-
-
                     <form asp-controller="Home" asp-action="Search" method="get" class="d-flex" role="search">
-                        <input type="text" name="searchString" placeholder="Pesquisar livros..." />
-                        <input type="submit" value="Pesquisar" />
+                        <input class="form-control me-2" type="text" name="searchString" placeholder="Pesquisar livros..." />
+                        <input class="btn btn-outline-success" style="color:white" type="submit" value="Pesquisar" />
                     </form>
 
 
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="Colaborador" asp-controller="Home" asp-action="Login">Administrador</a>
-                    </li>
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 espaco" style="margin-left:30vw">
+
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 espaco" style="margin-left:20vw">
                         <a href="/Home/Carrinho">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
                                 <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
@@ -136,6 +133,9 @@
                 <li class="nav-item"><a href="@Url.Action("Index", "Home")" " class="nav-link px-2 text-muted">Pricing</a></li>
                 <li class="nav-item"><a href="@Url.Action("Index", "Home")" " class="nav-link px-2 text-muted">FAQs</a></li>
                 <li class="nav-item"><a href="@Url.Action("Index", "Home")" " class="nav-link px-2 text-muted">About</a></li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="Colaborador" asp-controller="Home" asp-action="Login">Administrador</a>
+                </li>
             </ul>
             <p class="text-center text-muted">&copy; 2022 Company, Inc</p>
         </footer>
