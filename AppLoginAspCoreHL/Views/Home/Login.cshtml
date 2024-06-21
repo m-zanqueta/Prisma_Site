@@ -76,6 +76,7 @@
 
             <div class="login-form-prisma">
                 <h3>Login</h3>
+
                 @if (ViewData["MSG_E"] != null)
                 {
                     <p class="alert alert-danger">@Html.Raw(ViewData["MSG_E"])</p>
@@ -92,7 +93,11 @@
                     </div>
                 </form>
                 <p class="text-center">Não tem cadastro? <a href="@Url.Action("Cadastrar", "Home")">Clique Aqui</a></p>
+                <a type="button" class="btn btn-outline-light" style="color:lightgray" asp-area="Colaborador" asp-controller="Home" asp-action="Login">Entrar como Administrador</a>
+
             </div>
+
         </div>
+
     </main>
 </body>
