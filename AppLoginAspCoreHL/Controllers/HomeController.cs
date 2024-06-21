@@ -254,5 +254,10 @@ namespace AppLoginAspCoreHL.Controllers
             Livro liv = _livroRepository.ObterLivro(Id);
             return View(liv);
         }
+
+        public IActionResult SaibaMais()
+        {
+            return View();
+        }
     }
 }
