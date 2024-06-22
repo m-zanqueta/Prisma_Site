@@ -55,10 +55,5 @@ namespace AppLoginAspCoreHL.Areas.Colaborador.Controllers
             _loginColaborador.Logout();
             return RedirectToAction("Login", "Home");
         }
-        //public IActionResult RedirecionarParaForaDaArea()
-        //{
-        //    // Redireciona para uma URL externa
-        //    return Redirect("http://localhost:10279/");
-        //}
     }
 }

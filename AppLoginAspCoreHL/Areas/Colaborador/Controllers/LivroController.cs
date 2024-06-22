@@ -28,7 +28,7 @@ namespace AppLoginAspCoreHL.Areas.Colaborador.Controllers
             return View(_livroRepository.ObterTodosLivros());
         }
         [HttpGet]
-        //[ValidateHttpReferer]
+        [ValidateHttpReferer]
         public IActionResult Cadastrar()
         {
             IEnumerable<CategoriaLiv> listaCategoria = _categoriaRepository.ObterTodasCategorias();
@@ -92,11 +92,6 @@ namespace AppLoginAspCoreHL.Areas.Colaborador.Controllers
             }
             return View();
         }
-
-        //public IActionResult Excluir(int Id)
-        //{
-        //    _livroRepository.Excluir(Id);
-        //    return RedirectToAction(nameof(Index));
 
         [ValidateHttpReferer]
         public IActionResult Habilitar(int Id)

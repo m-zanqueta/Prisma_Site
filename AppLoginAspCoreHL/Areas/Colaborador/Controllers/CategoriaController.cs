@@ -57,11 +57,5 @@ namespace AppLoginAspCoreHL.Areas.Colaborador.Controllers
             }
             return View();
         }
-        //[ValidateHttpReferer]
-        //public IActionResult Excluir(int Id)
-        //{
-        //    _categoriaRepository.Excluir(Id);
-        //    return RedirectToAction(nameof(Index));
-        //}
     }
 }

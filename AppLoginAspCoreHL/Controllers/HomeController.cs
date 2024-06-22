@@ -162,6 +162,28 @@ namespace AppLoginAspCoreHL.Controllers
                 return RedirectToAction(nameof(Carrinho));
             }
         }
+        public IActionResult DiminuirItem(int id)
+        {
+            Livro produto = _livroRepository.ObterLivro(id);
+
+            if (produto == null)
+            {
+                return View("Não existe item");
+            }
+            else
+            {
+                var item = new Livro()
+                {
+                    Id = id,
+                    QuantidadeEstq = 1,
+                    Imagem = produto.Imagem,
+                    Titulo = produto.Titulo,
+                    Preco = produto.Preco
+                };
+                _cookieCarrinhoCompra.Diminuir(item);
+                return RedirectToAction(nameof(Carrinho));
+            }
+        }
         public IActionResult Carrinho()
         {
             return View(_cookieCarrinhoCompra.Consultar());
@@ -183,6 +205,7 @@ namespace AppLoginAspCoreHL.Controllers
 
             mdE.Id_usu = _loginCliente.GetCliente().Id;
             mdE.Horario_ped = data;
+            mdE.Situacao = PedidoTipoConstant.Andamento;
 
 
             _pedidoRepository.Cadastrar(mdE);
@@ -198,10 +221,11 @@ namespace AppLoginAspCoreHL.Controllers
                 valorTotalItens += mdI.VlTotal;
                 _itemRepository.Cadastrar(mdI);
             }
-            _pedidoRepository.InputValor(pedido.Id_pedido);
+            
+            _pedidoRepository.InputValor(Math.Round(valorTotalItens, 2), pedido.Id_pedido);
 
             _cookieCarrinhoCompra.RemoverTodos();
-            return View(_itemRepository.ObterTodosItensPedido(pedido.Id_pedido));
+            return View(_itemRepository.ObterTodosItensPedido(pedido.Id_pedido, mdE.Id_usu));
 
         }
         [ClienteAutorizacao]

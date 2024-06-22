@@ -1,0 +1,86 @@
+﻿@model IEnumerable<AppLoginAspCoreHL.Models.Pedido>
+@using AppLoginAspCoreHL.Models.Constant
+@inject AppLoginAspCoreHL.Libraries.Login.LoginColaborador _colaborador
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_pedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_usu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Horario_ped)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Situacao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_pedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_usu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Horario_ped)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+                    @if (item.Situacao == "A")
+                    {
+                    <td>
+                        Em Andamento
+                    </td>
+                    }
+                    else
+                    {
+                    <td>
+                        Finalizado
+                    </td>
+                    }
+            </td>
+            <td>
+                    @if (item.Situacao == "A")
+                    {
+                        <a asp-action="FinalizarPedido" asp-route-id="@item.Id_pedido" class="btn btn-success"
+                           onclick="return confirm('O pedido foi entregue com sucesso?')">Finalizar</a>
+                    }
+                    @if (item.Situacao == "E" && _colaborador.GetColaborador().Tipo == ColaboradorTipoConstant.Gerente)
+                    {
+                        <a asp-action="ReabrirPedido" asp-route-id="@item.Id_pedido" class="btn btn-info"
+                           onclick="return confirm('Deseja reabrir este pedido?')">Reabrir</a>
+                    }
+                    <a asp-action="Detalhes" asp-route-id="@item.Id_pedido" class="btn btn-secondary">Detalhes</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

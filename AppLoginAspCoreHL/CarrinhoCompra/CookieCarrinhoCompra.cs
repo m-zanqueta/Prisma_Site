@@ -52,6 +52,23 @@ namespace AppLoginAspCoreHL.CarrinhoCompra
             }
             Salvar(Lista);
         }
+
+        public void Diminuir(Livro item)
+        {
+            List<Livro> Lista;
+            Lista = Consultar();
+            var ItemLocalizado = Lista.SingleOrDefault(a => a.Id == item.Id);
+            if(ItemLocalizado.QuantidadeEstq > 1)
+            {
+                ItemLocalizado.QuantidadeEstq = ItemLocalizado.QuantidadeEstq - 1;
+                Salvar(Lista);
+            }
+            else
+            {
+                Remover(item);
+            }
+            
+        }
         public void Atuaizar(Livro item)
         {
             var Lista = Consultar();

@@ -1,12 +1,11 @@
 ﻿@model IEnumerable<AppLoginAspCoreHL.Models.ItensPedido>
 
 @{
-    ViewData["Title"] = "Pedido";
+    ViewData["Title"] = "Detalhes";
 }
 
-<h1>Pedido Realizado com sucesso</h1>
+<h1>Detalhes do Pedido</h1>
 
-<h3>Detalhes do Pedido</h3>
 <table class="table">
     <thead>
         <tr>
@@ -29,9 +28,8 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
+@foreach (var item in Model) {
+        <tr>
                 <td>
                     <figure class="media">
                         <div class="img-wrap">
@@ -51,7 +49,12 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.VlTotal)
                 </td>
-            </tr>
-        }
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
     </tbody>
 </table>

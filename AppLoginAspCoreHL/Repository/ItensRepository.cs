@@ -46,14 +46,17 @@ namespace AppLoginAspCoreHL.Repository
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ItensPedido> ObterTodosItensPedido(int id)
+        public IEnumerable<ItensPedido> ObterTodosItensPedido(int idPed, int idUsu)
         {
             List<ItensPedido> ItensList = new List<ItensPedido>();
             using (var conexao = new MySqlConnection(_conexaoMySQl))
             {
                 conexao.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from itens_pedido as t1 inner join pedido as t2 where t1.Id_ped = @Id_ped", conexao);
-                cmd.Parameters.Add("@Id_ped", MySqlDbType.VarChar).Value = id;
+                MySqlCommand cmd = new MySqlCommand("select Titulo_liv, QtItens, ROUND(VlTotal, 1) AS VlTotal, t1.Id_ped, t3.Image_liv " + 
+                " from itens_pedido as t1 inner join pedido as t2 on t1.Id_ped = t2.Id_ped inner join livros as t3 on t1.Id_liv = t3.Id_liv " + 
+                " inner join usuario as t4 on t2.Id_usu = t4.Id_usu where t2.Id_usu = @Id_usu and t2.Id_ped = @Id_ped;", conexao);
+                cmd.Parameters.Add("@Id_ped", MySqlDbType.VarChar).Value = idPed;
+                cmd.Parameters.Add("@Id_usu", MySqlDbType.VarChar).Value = idUsu;
 
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -65,10 +68,11 @@ namespace AppLoginAspCoreHL.Repository
                     ItensList.Add(
                         new ItensPedido
                         {
-                            Id_liv = (Int32)(dr["Id_liv"]),
+                            Titulo_liv = (string)(dr["Titulo_liv"]),
                             QtItens = (Int32)(dr["QtItens"]),
                             VlTotal = (double)(dr["VlTotal"]),
-                            Id_pedido = (Int32)(dr["Id_ped"])
+                            Id_pedido = (Int32)(dr["Id_ped"]),
+                            Imagem = (string)(dr["Image_liv"])
                         });
                 }
                 return ItensList;
