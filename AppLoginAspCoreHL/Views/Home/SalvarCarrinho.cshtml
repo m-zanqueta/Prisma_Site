@@ -7,14 +7,12 @@
 <h1>Pedido Realizado com sucesso</h1>
 
 <h3>Detalhes do Pedido</h3>
+<h4>Número do pedido:</h4>
 <table class="table">
     <thead>
         <tr>
             <th>
-                Capa do Livro
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Id_pedido)
+                Produto
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Titulo_liv)
@@ -35,12 +33,9 @@
                 <td>
                     <figure class="media">
                         <div class="img-wrap">
-                            <img alt="Thumbnail [300x300]" style="width: 100px; height: 100px;" src="@item.Imagem">
+                            <img alt="Thumbnail [300x300]" style="width: 70px; height: 70px;" src="@item.Imagem">
                         </div>
                     </figure>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id_pedido)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Titulo_liv)
@@ -49,7 +44,7 @@
                     @Html.DisplayFor(modelItem => item.QtItens)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.VlTotal)
+                    @Html.DisplayFor(modelItem => item.VlTotal.ToString("C"))
                 </td>
             </tr>
         }

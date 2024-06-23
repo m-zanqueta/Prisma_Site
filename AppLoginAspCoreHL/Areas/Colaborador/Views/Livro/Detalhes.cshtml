@@ -4,10 +4,10 @@
     ViewData["Title"] = "Detalhes";
 }
 
-<h1>Detalhes</h1>
+<h1>Livro</h1>
 
 <div>
-    <h4>Livro</h4>
+    <h4>Detalhes</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -50,7 +50,7 @@
             @Html.DisplayNameFor(model => model.Preco)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Preco)
+            @Model.Preco.ToString("C")
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Autor)
@@ -58,15 +58,6 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Autor)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Situacao)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Situacao)
-        </dd>
     </dl>
 </div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>
+<a asp-action="Index" class="btn btn-outline-primary btn-sm">Voltar</a>

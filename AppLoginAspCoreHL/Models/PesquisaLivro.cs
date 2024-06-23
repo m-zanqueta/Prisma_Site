@@ -4,8 +4,7 @@
     {
         public int Id_liv { get; set; }
         public string Titulo_liv { get; set; }
-        public string Desc_liv { get; set; }
-        public string Autor_liv { get; set; }
-        public string Nm_cat { get; set; }
+        public string Image_liv { get; set; }
+        public double Preco_liv { get; set; }
     }
 }

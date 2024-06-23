@@ -3,56 +3,179 @@
 @{
     ViewData["Title"] = "Atualizar";
 }
+<head>
+    <style type="text/css">
+        body {
+            background: rgb(99, 39, 120)
+        }
 
-<h1>Atualizar</h1>
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #BA68C8
+        }
 
-<h4>Colaborador</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="EditUsuario">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        .profile-button {
+            background: rgb(99, 39, 120);
+            box-shadow: none;
+            border: none
+        }
 
-                <input asp-for="Id" class="form-control" type="hidden"/>
+            .profile-button:hover {
+                background: #682773
+            }
 
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
+            .profile-button:focus {
+                background: #682773;
+                box-shadow: none
+            }
+
+            .profile-button:active {
+                background: #682773;
+                box-shadow: none
+            }
+
+        .back:hover {
+            color: #682773;
+            cursor: pointer
+        }
+
+        .labels {
+            font-size: 11px
+        }
+
+        .add-experience:hover {
+            background: #BA68C8;
+            color: #fff;
+            cursor: pointer;
+            border: solid 1px #BA68C8
+        }
+    </style>
+</head>
+<body>
+<form asp-action="EditUsuario">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input asp-for="Id" class="form-control" type="hidden" />
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
             </div>
-            <div class="form-group">
-                <label asp-for="Nascimento" class="control-label"></label>
-                <input asp-for="Nascimento" class="form-control date" type="text"/>
-                <span asp-validation-for="Nascimento" class="text-danger"></span>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Edição de Usuário</h4>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label asp-for="Nome" class="labels"></label>
+                            <input asp-for="Nome" class="form-control" />
+                            <span asp-validation-for="Nome" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-12">
+                            <label asp-for="Nascimento" class="labels"></label>
+                            <input asp-for="Nascimento" class="form-control date" type="text" />
+                            <span asp-validation-for="Nascimento" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-12">
+                            <label asp-for="CPF" class="labels"></label>
+                            <input asp-for="CPF" class="form-control cpf" placeholder="000.000.000-00" />
+                            <span asp-validation-for="CPF" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-12">
+                            <label asp-for="Telefone" class="labels"></label>
+                            <input asp-for="Telefone" class="form-control phone_with_ddd" placeholder="(00) 0000-0000" />
+                            <span asp-validation-for="Telefone" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-12">
+                            <label asp-for="Login" class="labels"></label>
+                            <input asp-for="Login" class="form-control" />
+                            <span asp-validation-for="Login" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-12">
+                            <label asp-for="Senha" class="labels"></label>
+                            <input asp-for="Senha" class="form-control" />
+                            <span asp-validation-for="Senha" class="text-danger"></span>
+                        </div>
+                    </div><br/>
+                        <div class="col-md-6"><input class="btn btn-primary profile-button" type="submit" value="Salvar"></input></div><br/>
+                        <div class="col-md-6"><a asp-action="Index" class="btn btn-secondary">Voltar</a></div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="CPF" class="control-label"></label>
-                <input asp-for="CPF" class="form-control cpf" placeholder="000.000.000-00" />
-                <span asp-validation-for="CPF" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Telefone" class="control-label"></label>
-                <input asp-for="Telefone" class="form-control phone_with_ddd" placeholder="(00) 0000-0000" />
-                <span asp-validation-for="Telefone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Login" class="control-label"></label>
-                <input asp-for="Login" class="form-control" />
-                <span asp-validation-for="Login" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Senha" class="control-label"></label>
-                <input asp-for="Senha" class="form-control" />
-                <span asp-validation-for="Senha" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+</form>
 
+<script>
+        $(document).ready(function () {
+            $('.date').mask('00/00/0000');
+            $('.time').mask('00:00:00');
+            $('.date_time').mask('00/00/0000 00:00:00');
+            $('.cep').mask('00000-000');
+            $('.phone').mask('0000-0000');
+            $('.phone_with_ddd').mask('(00) 0000-0000');
+            $('.phone_us').mask('(000) 000-0000');
+            $('.mixed').mask('AAA 000-S0S');
+            $('.cpf').mask('000.000.000-00', { reverse: true });
+            $('.cnpj').mask('00.000.000/0000-00', { reverse: true });
+            $('.money').mask('000.000.000.000.000,00', { reverse: true });
+
+            $('.percent').mask('##0,00%', { reverse: true });
+            $('.clear-if-not-match').mask("00/00/0000", { clearIfNotMatch: true });
+            $('.placeholder').mask("00/00/0000", { placeholder: "__/__/____" });
+            $('.fallback').mask("00r00r0000", {
+                translation: {
+                    'r': {
+                        pattern: /[\/]/,
+                        fallback: '/'
+                    },
+                    placeholder: "__/__/____"
+                }
+            });
+            $('.selectonfocus').mask("00/00/0000", { selectOnFocus: true });
+        });
+</script>
+</body>
 <div>
     <a asp-action="Index">Voltar</a>
 </div>
 
+
+
+
+
+
+
+@*
+<div class="form-group">
+    <label asp-for="Nome" class="control-label"></label>
+    <input asp-for="Nome" class="form-control" />
+    <span asp-validation-for="Nome" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Nascimento" class="control-label"></label>
+    <input asp-for="Nascimento" class="form-control date" type="text" />
+    <span asp-validation-for="Nascimento" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="CPF" class="control-label"></label>
+    <input asp-for="CPF" class="form-control cpf" placeholder="000.000.000-00" />
+    <span asp-validation-for="CPF" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Telefone" class="control-label"></label>
+    <input asp-for="Telefone" class="form-control phone_with_ddd" placeholder="(00) 0000-0000" />
+    <span asp-validation-for="Telefone" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Login" class="control-label"></label>
+    <input asp-for="Login" class="form-control" />
+    <span asp-validation-for="Login" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Senha" class="control-label"></label>
+    <input asp-for="Senha" class="form-control" />
+    <span asp-validation-for="Senha" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <input type="submit" value="Salvar" class="btn btn-primary" />
+</div> *@

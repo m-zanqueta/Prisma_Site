@@ -6,19 +6,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<h1>Pedidos</h1>
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Id_pedido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Id_usu)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Cliente)
@@ -32,42 +25,40 @@
             <th>
                 @Html.DisplayNameFor(model => model.Situacao)
             </th>
-            <th></th>
+            <th>
+                Ações
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id_pedido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id_usu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Horario_ped)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Valor)
-            </td>
-            <td>
-                    @if (item.Situacao == "A")
-                    {
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id_pedido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Horario_ped)
+                </td>
+                <td>
+                    @item.Valor.ToString("C")
+                </td>
+                @if (item.Situacao == "A")
+                {
                     <td>
                         Em Andamento
                     </td>
-                    }
-                    else
-                    {
+                }
+                else
+                {
                     <td>
                         Finalizado
                     </td>
-                    }
-            </td>
-            <td>
+                }
+                <td>
                     @if (item.Situacao == "A")
                     {
                         <a asp-action="FinalizarPedido" asp-route-id="@item.Id_pedido" class="btn btn-success"
@@ -79,8 +70,8 @@
                            onclick="return confirm('Deseja reabrir este pedido?')">Reabrir</a>
                     }
                     <a asp-action="Detalhes" asp-route-id="@item.Id_pedido" class="btn btn-secondary">Detalhes</a>
-            </td>
-        </tr>
-}
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
