@@ -13,7 +13,7 @@
                     <div class="fs-5 mb-5">
                         <span>@Model.Preco.ToString("C")</span>
                     </div>
-                    <p class="lead">@Model.Descricao</p>
+                <p class="lead d-flex justify-content-center" style="text-align: justify;">@Model.Descricao</p>
                     <div class="d-flex">
                         @using (Html.BeginForm("AdicionarItem", "Home", FormMethod.Post))
                         {
@@ -29,7 +29,3 @@
             </div>
         </div>
     </section>
-<div>
-    @Html.ActionLink("Comprar", "AdicionarItem", new { id = Model.Id }) |
-    <a asp-action="Index">Voltar</a>
-</div>
