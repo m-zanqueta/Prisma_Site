@@ -9,8 +9,8 @@ namespace AppLoginAspCoreHL.Repository.Contract
         void Excluir(int Id);
         void Habilitar(int Id);
         void Desabilitar(int Id);
-
         Livro ObterLivro(int Id);
         IEnumerable<Livro> ObterTodosLivros();
+        IEnumerable<Livro> ObterTodosLivrosNovidades();
     }
 }

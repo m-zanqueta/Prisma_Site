@@ -29,7 +29,7 @@ namespace AppLoginAspCoreHL.Models
         public string Telefone { get; set;}
 
 
-        [Display(Name = "Email para login")]
+        [Display(Name = "Email de login")]
         [EmailAddress(ErrorMessage = "O email não é válido")]
         [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Informe um email válido...")]
         public string Login { get; set;}

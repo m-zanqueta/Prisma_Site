@@ -4,7 +4,7 @@
     ViewData["Title"] = "Clientes";
 }
 
-<h1>Clentes</h1>
+<h1>Clientes</h1>
 @* <p class="btn btn-outline-primary" role="button">
 <a asp-action="Cadastrar">
 <span class="fas fa-user-plus" title="Cadastro" aria-hidden="true"></span>
@@ -21,9 +21,6 @@
                 <th scope="col">@Html.DisplayNameFor(model => model.First().CPF)</th>
                 <th scope="col">@Html.DisplayNameFor(model => model.First().Telefone)</th>
                 <th scope="col">@Html.DisplayNameFor(model => model.First().Login)</th>
-                <th scope="col">@Html.DisplayNameFor(model => model.First().Senha)</th>
-
-                <th scope="col">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -35,7 +32,6 @@
                     <td>@cliente.CPF</td>
                     <td>@cliente.Telefone</td>
                     <td>@cliente.Login</td>
-                    <td>@cliente.Senha</td>
                 </tr>
             }
         </tbody>

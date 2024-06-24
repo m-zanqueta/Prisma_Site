@@ -8,6 +8,7 @@ using AppLoginAspCoreHL.Repository.Contract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MySql.Data.MySqlClient;
+using System;
 using System.Diagnostics;
 
 namespace AppLoginAspCoreHL.Controllers
@@ -186,6 +187,11 @@ namespace AppLoginAspCoreHL.Controllers
         }
         public IActionResult Carrinho()
         {
+            if(_cookieCarrinhoCompra.Consultar().Count == 0)
+            {
+                ViewData["MSG_E"] = "Seu carrinho está vazio!";
+                return View("Erro");
+            }
             return View(_cookieCarrinhoCompra.Consultar());
         }
         public IActionResult RemoverItem(int id)
@@ -200,32 +206,36 @@ namespace AppLoginAspCoreHL.Controllers
         {
             List<Livro> carrinho = _cookieCarrinhoCompra.Consultar();
 
-            Pedido mdE = new Pedido();
-            ItensPedido mdI = new ItensPedido();
-
-            mdE.Id_usu = _loginCliente.GetCliente().Id;
-            mdE.Horario_ped = data;
-            mdE.Situacao = PedidoTipoConstant.Andamento;
-
-
-            _pedidoRepository.Cadastrar(mdE);
-            _pedidoRepository.BuscarPedidoPorId(pedido);
-
-            double valorTotalItens = 0;
-            for (int i = 0; i < carrinho.Count; i++)
+            if (carrinho.Count > 0)
             {
-                mdI.Id_pedido = Convert.ToInt32(pedido.Id_pedido);
-                mdI.Id_liv = Convert.ToInt32(carrinho[i].Id);
-                mdI.QtItens = Convert.ToInt32(carrinho[i].QuantidadeEstq);
-                mdI.VlTotal = Convert.ToDouble(carrinho[i].Preco * carrinho[i].QuantidadeEstq);
-                valorTotalItens += mdI.VlTotal;
-                _itemRepository.Cadastrar(mdI);
-            }
-            
-            _pedidoRepository.InputValor(Math.Round(valorTotalItens, 2), pedido.Id_pedido);
+                Pedido mdE = new Pedido();
+                ItensPedido mdI = new ItensPedido();
 
-            _cookieCarrinhoCompra.RemoverTodos();
-            return View(_itemRepository.ObterTodosItensPedido(pedido.Id_pedido, mdE.Id_usu));
+                mdE.Id_usu = _loginCliente.GetCliente().Id;
+                mdE.Horario_ped = data;
+                mdE.Situacao = PedidoTipoConstant.Andamento;
+
+
+                _pedidoRepository.Cadastrar(mdE);
+                _pedidoRepository.BuscarPedidoPorId(pedido);
+
+                double valorTotalItens = 0;
+                for (int i = 0; i < carrinho.Count; i++)
+                {
+                    mdI.Id_pedido = Convert.ToInt32(pedido.Id_pedido);
+                    mdI.Id_liv = Convert.ToInt32(carrinho[i].Id);
+                    mdI.QtItens = Convert.ToInt32(carrinho[i].QuantidadeEstq);
+                    mdI.VlTotal = Convert.ToDouble(carrinho[i].Preco * carrinho[i].QuantidadeEstq);
+                    valorTotalItens += mdI.VlTotal;
+                    _itemRepository.Cadastrar(mdI);
+                }
+
+                _pedidoRepository.InputValor(Math.Round(valorTotalItens, 2), pedido.Id_pedido);
+
+                _cookieCarrinhoCompra.RemoverTodos();
+                return View(_itemRepository.ObterTodosItensPedido(pedido.Id_pedido, mdE.Id_usu));
+            }
+            return RedirectToAction(nameof(Carrinho));
 
         }
         [ClienteAutorizacao]
@@ -233,44 +243,16 @@ namespace AppLoginAspCoreHL.Controllers
         {
             return View();
         }
-        //public IActionResult Search(string searchString)
-        //{
-        //    var livros = new List<PesquisaLivro>();
-
-        //    if (!string.IsNullOrEmpty(searchString))
-        //    {
-        //        using (MySqlConnection conexao = new MySqlConnection(_connectionString))
-        //        {
-        //            conexao.Open();
-        //            string query = "SELECT titulo_liv, Desc_liv, Autor_liv, nm_cat FROM pesquisaLivro WHERE titulo_liv LIKE @search OR Desc_liv LIKE @search OR Autor_liv LIKE @search OR nm_cat LIKE @search";
-        //            using (MySqlCommand cmd = new MySqlCommand(query, conexao))
-        //            {
-        //                cmd.Parameters.AddWithValue("@search", "%" + searchString + "%");
-
-        //                using (MySqlDataReader reader = cmd.ExecuteReader())
-        //                {
-        //                    while (reader.Read())
-        //                    {
-        //                        var livro = new PesquisaLivro
-        //                        {
-        //                            Titulo_liv = reader["titulo_liv"].ToString(),
-        //                            Desc_liv = reader["Desc_liv"].ToString(),
-        //                            Autor_liv = reader["Autor_liv"].ToString(),
-        //                            Nm_cat = reader["nm_cat"].ToString()
-        //                        };
-        //                        livros.Add(livro);
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    return View(livros);
-        //}
+        
         [HttpGet]
         public IActionResult Search(string searchString)
         {
-            var livros = _pesquisaRepository.PesquisarLivros(searchString);
+            List<PesquisaLivro> livros = _pesquisaRepository.PesquisarLivros(searchString);
+            if(livros.Count == 0)
+            {
+                ViewData["MSG_E"] = "Nenhum livro foi encontrado!";
+                return View("Erro");
+            }
             return View(livros);
         }
         public IActionResult Detalhes(int Id)

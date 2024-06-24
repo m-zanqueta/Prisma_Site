@@ -4,93 +4,76 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Livros</h1>
 
-<p>
-    <a asp-action="Cadastrar">Cadastrar novo livro</a>
-</p>
+<a class="btn btn-outline-dark" asp-action="Cadastrar">Cadastrar</a>
+<hr />
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Id)
             </th>
-            @* <th>
-                @Html.DisplayNameFor(model => model.Imagem)
-            </th> *@
-            <th>
-                @Html.DisplayNameFor(model => model.QuantidadeEstq)
-            </th>
-            @* <th>
-                @Html.DisplayNameFor(model => model.Descricao)
-            </th> *@
-            @* <th>
-                @Html.DisplayNameFor(model => model.NumeroPags)
-            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuantidadeEstq)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Preco)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Autor)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Situacao)
             </th>
-            <th></th>
+            <th>
+                Ações
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            @* <td>
-                @Html.DisplayFor(modelItem => item.Imagem)
-            </td> *@
-            <td>
-                @Html.DisplayFor(modelItem => item.QuantidadeEstq)
-            </td>
-            @* <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td> *@
-            @* <td>
-                @Html.DisplayFor(modelItem => item.NumeroPags)
-            </td> *@
-            <td>
-                @Html.DisplayFor(modelItem => item.Titulo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Preco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Autor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Situacao)
-            </td>
-            <td>
-                    <a asp-action="Atualizar" asp-route-id="@item.Id" class="btn btn-info">Editar</a>
-
-                    <a asp-action="EditImage" asp-route-id="@item.Id" class="btn btn-primary">Alterar imagem</a>
-
-                    <a asp-action="Detalhes" asp-route-id="@item.Id" class="btn btn-secondary">Detalhes</a>
-
-                    @if (item.Situacao == "H")
-                    {
-                        <a asp-action="Desabilitar" asp-route-id="@item.Id" class="btn btn-warning"
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuantidadeEstq)
+                </td>
+                <td>
+                    @item.Preco.ToString("C")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Autor)
+                </td>
+                @if (item.Situacao == "H")
+                {
+                    <td>
+                        Habilitado<br />
+                        <a asp-action="Desabilitar" asp-route-id="@item.Id" class="btn btn btn-outline-warning btn-sm"
                            onclick="return confirm('Deseja realmente desabilitar esse livro?')">Desabilitar</a>
-                    }
-                    @if(item.Situacao == "D")
-                    {
-                        <a asp-action="Habilitar" asp-route-id="@item.Id" class="btn btn-success"
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        Desabilitado<br />
+                        <a asp-action="Habilitar" asp-route-id="@item.Id" class="btn btn-outline-success btn-sm"
                            onclick="return confirm('Deseja realmente habilitar esse livro?')">Habilitar</a>
-                    }
-            </td>
-        </tr>
-}
+                    </td>
+                }
+                <td>
+                    <a asp-action="Atualizar" asp-route-id="@item.Id" class="btn btn-info btn-sm">Editar</a>
+
+                    <a asp-action="EditImage" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Alterar imagem</a>
+
+                    <a asp-action="Detalhes" asp-route-id="@item.Id" class="btn btn-info btn-sm">Detalhes</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -149,6 +149,44 @@ namespace AppLoginAspCoreHL.Repository
                 return LivroList;
             }
         }
+        public IEnumerable<Livro> ObterTodosLivrosNovidades()
+        {
+            List<Livro> NovidadesList = new List<Livro>();
+            using (var conexao = new MySqlConnection(_conexaoMySQL))
+            {
+                conexao.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from livros as t1 inner join categoria as t2 where t1.Id_cat = t2.Id_cat order by Id_liv desc LIMIT 10;", conexao);
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                conexao.Close();
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                        NovidadesList.Add(
+                        new Livro
+                        {
+                            Id = (Int32)(dr["Id_liv"]),
+                            categoria = new CategoriaLiv()
+                            {
+                                id = (Int32)(dr["Id_cat"]),
+                                nome = (string)(dr["nm_cat"]),
+                            },
+                            QuantidadeEstq = (Int32)(dr["QtEstoque"]),
+                            Descricao = (string)(dr["Desc_liv"]),
+                            Imagem = (string)(dr["Image_liv"]),
+                            NumeroPags = (Int32)(dr["Nu_paginas"]),
+                            Preco = (double)(dr["Preco_liv"]),
+                            Titulo = (string)(dr["Titulo_liv"]),
+                            Autor = (string)(dr["Autor_liv"]),
+                            Situacao = (string)(dr["Situacao_liv"])
+                        });
+                    
+                }
+                return NovidadesList;
+            }
+        }
         public void Habilitar(int Id)
         {
             string situacao = LivroTipoConstant.Habilitado;

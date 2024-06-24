@@ -17,6 +17,13 @@
     </style>
 </head>
 
+@if (Model.Count() == 0)
+{
+    <h2>Seu carrinho está vazio!<a asp-controller="Home" asp-action="Index">Clique aqui</a> para começar as compras... </h2>
+}
+else
+{ }
+
 <div class="container">
     <section id="order">
         <br />
@@ -47,18 +54,14 @@
                                             <img alt="Thumbnail [300x300]" style="width: 40px; height: 40px;" src="@item.Imagem">
                                         </div>
                                         <figcaption class="media-body">
-                                            <h6 class="title text-truncate">@item.Titulo</h6>
-                                            <dl class="dlist-inline small">
-                                                <dt>Codigo Livro: @item.Id </dt>
-                                                @* <dd>@item.codLivro </dd> *@
-                                            </dl>
+                                            <h6 class="title text-truncate">   @item.Titulo</h6>
                                         </figcaption>
                                     </figure>
                                 </td>
                                 <td>
                                     <div class="col-auto">
                                         <div class="input-group mb-2 control-inline">
-                                            
+
                                             <input type="hidden" class="inputQuantidadeEstoque" value="@item.QuantidadeEstq" />
                                             <input type="hidden" class="inputValorUnitario" value="@item.Preco" />
 
@@ -66,7 +69,7 @@
                                             <div class="d-flex flex-row">
                                                 @using (Html.BeginForm("DiminuirItem", "Home", FormMethod.Post))
                                                 {
-                                                 <input type="hidden" name="id" value=@item.Id>
+                                                    <input type="hidden" name="id" value=@item.Id>
                                                     <button type="submit" class="btn btn-outline-primary">-</button>
                                                 }
                                                 <input type="number" style="width: 60px; text-align: center" readonly="readonly"
@@ -84,13 +87,12 @@
                                 </td>
                                 @{
                                     double preco = item.Preco * item.QuantidadeEstq;
-                                    Math.Round(preco, 2);
                                 }
                                 <td>
                                     <div class="col-auto">
                                         <dl class="dlist-inline small">
                                             <dt>@preco.ToString("C")</dt>
-                                            
+
                                         </dl>
                                     </div>
                                 </td>
@@ -109,7 +111,7 @@
 </div>
 
 
-
+<h2>Método de Pagamento</h2>
 <div class="card shadow-2-strong mb-5 mb-lg-0" style="border-radius: 16px;">
     <div class="card-body p-4">
 
@@ -122,7 +124,8 @@
                                    value="" aria-label="..." checked />
                         </div>
                         <div class="rounded border w-100 p-3">
-                            <p class="d-flex align-items-center mb-0">Cartão de Crédito
+                            <p class="d-flex align-items-center mb-0">
+                                Cartão de Crédito
                             </p>
                         </div>
                     </div>
@@ -132,7 +135,9 @@
                                    value="" aria-label="..." />
                         </div>
                         <div class="rounded border w-100 p-3">
-                            <p class="d-flex align-items-center mb-0"></i>Cartão de Débito
+                            <p class="d-flex align-items-center mb-0">
+                                </i>
+                                Cartão de Débito
                             </p>
                         </div>
                     </div>
@@ -142,7 +147,9 @@
                                    value="" aria-label="..." />
                         </div>
                         <div class="rounded border w-100 p-3">
-                            <p class="d-flex align-items-center mb-0"></i>PIX
+                            <p class="d-flex align-items-center mb-0">
+                                </i>
+                                PIX
                             </p>
                         </div>
                     </div>
@@ -153,26 +160,26 @@
                     <div class="col-12 col-xl-6">
                         <div data-mdb-input-init class="form-outline mb-4 mb-xl-5">
                             <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
-                                   placeholder="João Pedro" />
+                                   placeholder="João Pedro" required />
                             <label class="form-label" for="typeName">Nome no Cartão</label>
                         </div>
 
                         <div data-mdb-input-init class="form-outline mb-4 mb-xl-5">
                             <input type="text" id="typeExp" class="form-control form-control-lg" placeholder="MM/YY"
-                                   size="7" id="exp" minlength="7" maxlength="7" />
+                                   size="7" id="exp" minlength="7" maxlength="7" required />
                             <label class="form-label" for="typeExp">Validade</label>
                         </div>
                     </div>
                     <div class="col-12 col-xl-6">
                         <div data-mdb-input-init class="form-outline mb-4 mb-xl-5">
                             <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
-                                   placeholder="1111 2222 3333 4444" minlength="19" maxlength="19" />
+                                   placeholder="1111 2222 3333 4444" minlength="19" maxlength="19" required />
                             <label class="form-label" for="typeText">Número do cartão</label>
                         </div>
 
                         <div data-mdb-input-init class="form-outline mb-4 mb-xl-5">
                             <input type="password" id="typeText" class="form-control form-control-lg"
-                                   placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
+                                   placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" required />
                             <label class="form-label" for="typeText">Cvv</label>
                         </div>
                     </div>
@@ -188,7 +195,7 @@
 
                 <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block btn-lg">
                     <a class="btn btn-primary btn-continuar-comprando" asp-action="SalvarCarrinho" asp-controller="Home">
-                        Finalizar o Empréstimo
+                        Finalizar Compra
                     </a>
                 </button>
 
@@ -197,48 +204,44 @@
 
     </div>
 </div>
-
-
-
 <div class="container">
-    <br />
-    <br />
     <div class="row">
         <div class="col-md-12">
-            Deseja adicionar outro? <a asp-controller="Home" asp-action="Index">Clique aqui</a> para continuar ...
+            Deseja adicionar outro produto? <a asp-controller="Home" asp-action="Index">Clique aqui</a> para continuar ...
         </div>
     </div>
 </div>
 
 
-        <script>
-            // Selecionando os radios
-            const radioCredit = document.getElementById('radioNoLabel1v');
-            const radioDebit = document.getElementById('radioNoLabel2v');
-            const radioPix = document.getElementById('radioNoLabel3v');
-            // Selecionando os elementos de input que devem aparecer ou desaparecer
-            const cardDetails = document.getElementById('cardDetails');
 
-            // Função para mostrar ou esconder os inputs baseado no estado dos radios
-            function toggleInputs() {
-                if (radioPix.checked) {
-                    cardDetails.classList.add('card-hidden');
-                }
-                // else if (radio2.checked) {
-                //     cardDetails.classList.add('hidden');
-                //     debitDetails.classList.remove('hidden');
-                // }
-                else {
-                    cardDetails.classList.remove('card-hidden');
-                }
-            }
+<script>
+    // Selecionando os radios
+    const radioCredit = document.getElementById('radioNoLabel1v');
+    const radioDebit = document.getElementById('radioNoLabel2v');
+    const radioPix = document.getElementById('radioNoLabel3v');
+    // Selecionando os elementos de input que devem aparecer ou desaparecer
+    const cardDetails = document.getElementById('cardDetails');
 
-            // Adicionando um listener para os radios para chamar a função toggleInputs quando mudarem
-            radioCredit.addEventListener('change', toggleInputs);
-            radioDebit.addEventListener('change', toggleInputs);
-            radioPix.addEventListener('change', toggleInputs);
+    // Função para mostrar ou esconder os inputs baseado no estado dos radios
+    function toggleInputs() {
+        if (radioPix.checked) {
+            cardDetails.classList.add('card-hidden');
+        }
+        // else if (radio2.checked) {
+        //     cardDetails.classList.add('hidden');
+        //     debitDetails.classList.remove('hidden');
+        // }
+        else {
+            cardDetails.classList.remove('card-hidden');
+        }
+    }
+
+    // Adicionando um listener para os radios para chamar a função toggleInputs quando mudarem
+    radioCredit.addEventListener('change', toggleInputs);
+    radioDebit.addEventListener('change', toggleInputs);
+    radioPix.addEventListener('change', toggleInputs);
 
 
-            // Chamando a função toggleInputs inicialmente para configurar o estado inicial
-            toggleInputs();
-        </script>
+    // Chamando a função toggleInputs inicialmente para configurar o estado inicial
+    toggleInputs();
+</script>

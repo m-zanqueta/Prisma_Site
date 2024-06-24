@@ -3,46 +3,114 @@
 @{
     ViewData["Title"] = "Resultado da Pesquisa";
 }
+<head>
+    <style type="text/css">
+    </style>
+</head>
+<h1 style="color:darkred">@ViewData["MSG_E"]</h1>
 
-<h1>Resultado da Pesquisa</h1>
-
-<form asp-controller="Home" asp-action="Search" method="get">
+@* <form asp-controller="Home" asp-action="Search" method="get">
     <div class="form-group">
         <label for="searchString">Pesquisar Livro:</label>
         <input type="text" id="searchString" name="searchString" class="form-control" value="@ViewBag.CurrentFilter">
     </div>
     <button type="submit" class="btn btn-primary">Pesquisar</button>
-</form>
+</form> *@
+    
 
-@if (Model != null && Model.Count > 0)
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Título</th>
-                <th>Descrição</th>
-                <th>Autor</th>
-                <th>Categoria</th>
-            </tr>
-        </thead>
-        <tbody>
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             @foreach (var livro in Model)
             {
-                <tr>
-                    <td>@livro.Titulo_liv</td>
-                    <td>@livro.Desc_liv</td>
-                    <td>@livro.Autor_liv</td>
-                    <td>@livro.Nm_cat</td>
-                    <td>
-                        <a asp-action="Detalhes" asp-controller="Home" asp-route-id="@livro.Id_liv" class="btn btn-info">Detalhes</a>
-                    </td>
-                </tr>
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <img class="card-img-top" src="@livro.Image_liv" />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">@livro.Titulo_liv</h5>
+                                <hr />
+                                <!-- Product price-->
+                                @livro.Preco_liv.ToString("C")
+                            </div>
+                        </div>
+                        <hr />
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            @using (Html.BeginForm("AdicionarItem", "Home", FormMethod.Post))
+                            {
+                                <input type="hidden" name="id" value=@livro.Id_liv>
+                                <input type="hidden" name="quantidade" value="1">
+                                <button type="submit" class="btn btn-primary btn-acao-primario">Adicionar</button>
+                            }
+                        </div>
+                    </div>
+                </div>
             }
-        </tbody>
-    </table>
+        </<div>
+    </<div>
+</section>
 
-}
-else
-{
-    <p>Nenhum livro encontrado.</p>
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*                     @if (Model != null && Model.Count > 0)
+                    {
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Título</th>
+                                    <th>Descrição</th>
+                                    <th>Autor</th>
+                                    <th>Categoria</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var livro in Model)
+                                {
+                                    <tr>
+                                        <td>@livro.Titulo_liv</td>
+                                        <td>@livro.Desc_liv</td>
+                                        <td>@livro.Autor_liv</td>
+                                        <td>@livro.Nm_cat</td>
+                                        <td>
+                                            <a asp-action="Detalhes" asp-controller="Home" asp-route-id="@livro.Id_liv" class="btn btn-info">Detalhes</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+ 
+                    } *@

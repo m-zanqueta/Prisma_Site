@@ -60,7 +60,8 @@
                                             </div>
 
                                             <div class="card-body">
-                                                <h5 class="card-title">@item.Titulo</h5>
+                                                <a asp-controller="Home" asp-action="Detalhes" asp-route-id="@item.Id">
+                                                <h5 class="card-title">@item.Titulo</h5></a>
                                                 <p class="card-text">@item.Preco.ToString("C")</p>
                                                 <div class="btn btn-primary" style="width:100%">
                                                     <div>

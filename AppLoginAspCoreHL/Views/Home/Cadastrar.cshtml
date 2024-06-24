@@ -4,7 +4,7 @@
     ViewData["Title"] = "Cadastrar";
 }
 
-<h1>Cadastrar</h1>
+@* <h1>Cadastrar</h1>
 
 <h4>Cliente</h4>
 <hr />
@@ -84,5 +84,151 @@
 
 <div>
     <a asp-action="Index">Back to List</a>
+</div> *@
+
+<div class="container">
+    <div class="user-info">
+        <img src="~/images/user-icon.png" alt="User Icon" class="user-icon" />
+        <div class="user-details">
+            <h2>Nome Completo User</h2>
+            <p>Emailuser@gmail.com</p>
+        </div>
+    </div>
+    <h3 class="form-title">Dados do usuário</h3>
+    <form asp-action="Cadastrar" class="form-horizontal">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <input asp-for="Nome" class="form-control" placeholder="Nome completo" />
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input asp-for="CPF" class="form-control" placeholder="CPF" />
+            <span asp-validation-for="CPF" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input asp-for="Telefone" class="form-control" placeholder="Telefone" />
+            <span asp-validation-for="Telefone" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input asp-for="Login" class="form-control" placeholder="Email" />
+            <span asp-validation-for="Login" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input asp-for="Endereco.estado.uf" class="form-control" placeholder="Estado" />
+            <span asp-validation-for="Endereco.estado.uf" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input asp-for="Endereco.rua" class="form-control" placeholder="Endereço" />
+            <span asp-validation-for="Endereco.rua" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input asp-for="Endereco.complemento" class="form-control complemento" placeholder="Complemento" />
+            <span asp-validation-for="Endereco.complemento" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input asp-for="Senha" class="form-control" type="password" placeholder="Senha" />
+            <span asp-validation-for="Senha" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Salvar" class="btn btn-success btn-block" />
+        </div>
+    </form>
 </div>
+
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        background-color: #f9f9f9;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .user-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+
+    .user-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+        .user-details h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .user-details p {
+            margin: 0;
+            color: #666;
+        }
+
+    .form-title {
+        align-self: flex-start;
+        color: #5a67d8;
+        margin-bottom: 15px;
+        font-size: 1.5em;
+    }
+
+    .form-horizontal {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 1em;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #eef2ff;
+    }
+
+        .form-control::placeholder {
+            color: #a0aec0;
+        }
+
+    .complemento {
+        display: inline-block;
+        width: calc(50% - 5px);
+        margin-left: 10px;
+    }
+
+    .btn-success {
+        background-color: #38a169;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1em;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+        .btn-success:hover {
+            background-color: #2f855a;
+        }
+</style>
 

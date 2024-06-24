@@ -3,51 +3,77 @@
 @{
     ViewData["Title"] = "PainelUsuario";
 }
+<head>
+    <style type="text/css">
+        body {
+            background: rgb(99, 39, 120)
+        }
 
-<h1>PainelUsuario</h1>
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #BA68C8
+        }
 
-<div>
-    <h4>Cliente</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nascimento)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nascimento)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CPF)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CPF)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Telefone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Login)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Login)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Senha)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Senha)
-        </dd>
-    </dl>
+        .profile-button {
+            background: rgb(99, 39, 120);
+            box-shadow: none;
+            border: none
+        }
+
+        .profile-button:hover {
+            background: #682773
+        }
+
+        .profile-button:focus {
+            background: #682773;
+            box-shadow: none
+        }
+
+        .profile-button:active {
+            background: #682773;
+            box-shadow: none
+        }
+
+        .back:hover {
+            color: #682773;
+            cursor: pointer
+        }
+
+        .labels {
+            font-size: 11px
+        }
+
+        .add-experience:hover {
+            background: #BA68C8;
+            color: #fff;
+            cursor: pointer;
+            border: solid 1px #BA68C8
+        }
+    </style>
+</head>
+
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Perfil de Usuário</h4>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Nome</label><input type="text" class="form-control" value="@Model.Nome" readonly="readonly"></div>
+                    <div class="col-md-12"><label class="labels">Data de Nascimento</label><input type="text" class="form-control" value="@Model.Nascimento.ToString("dd/MM/yyyy")" readonly="readonly"></div>
+                    <div class="col-md-12"><label class="labels">CPF</label><input type="text" class="form-control" value="@Model.CPF" readonly="readonly"></div>
+                    <div class="col-md-12"><label class="labels">Telefone</label><input type="text" class="form-control" value="@Model.Telefone" readonly="readonly"></div>
+                    <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" value="@Model.Login" readonly="readonly"></div>
+                    <div class="col-md-12"><label class="labels">Senha</label><input type="text" class="form-control" value="@Model.Senha" readonly="readonly"></div>
+                </div><br/>
+                <div class="col-md-6"><a asp-action="EditUsuario" asp-route-id="@Model.Id" class="btn btn-primary">Atualizar</a></div><br/>
+                <div class="col-md-6"><a asp-action="Index" class="btn btn-secondary">Voltar</a></div>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    @Html.ActionLink("Editar perfil de usuario", "EditUsuario", new {  id = Model.Id })
 </div>

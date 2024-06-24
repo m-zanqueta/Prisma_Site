@@ -4,9 +4,10 @@
     ViewData["Title"] = "Colaboradores";
 }
 
-<h1>Colaboradores</h1>
+<h1>Administradores</h1>
 
-<a class="btn btn-primary" asp-action="Cadastrar">Cadastrar</a>
+<a class="btn btn-outline-dark" asp-action="Cadastrar">Cadastrar</a>
+<hr />
 
 <div class="table-responsive">
     <table class="table table-bordered">
@@ -29,7 +30,18 @@
                     <td>@colaborador.Nome</td>
                     <td>@colaborador.Email</td>
                     <td>@colaborador.Senha</td>
-                    <td>@colaborador.Tipo</td>
+                    @if (colaborador.Tipo == "G")
+                    {
+                        <td>
+                            Geral
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            Comum
+                        </td>
+                    }
 
                     <td>
                         @if (colaborador.Id != 1)
@@ -39,7 +51,7 @@
                         @if (colaborador.Tipo == "C" && colaborador.Id != 1)
                         {
                             <a asp-action="Promover" asp-route-id="@colaborador.Id" class="btn btn-success"
-                               onclick="return confirm('Deseja realmente promover este administrador para gerente?')">Promover</a>
+                               onclick="return confirm('Deseja realmente promover este administrador para geral?')">Promover</a>
                         }
                         else if (colaborador.Tipo == "G" && colaborador.Id != 1)
                         {

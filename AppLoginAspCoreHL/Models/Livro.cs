@@ -4,14 +4,14 @@ namespace AppLoginAspCoreHL.Models
 {
     public class Livro
     {
-        [Display(Name = "Id")]
+        [Display(Name = "Código")]
         public int Id { get; set; }
 
         [Display(Name = "Imagem")]
         public string? Imagem { get; set; }
 
         [Required(ErrorMessage = "A quantidade em estoque é obrigatória.")]
-        [Display(Name = "Quantidade em estoque")]
+        [Display(Name = "Em estoque")]
         [Range(1, 9999, ErrorMessage = "Insira uma quantidade válida")]
         public int QuantidadeEstq { get; set; }
 
