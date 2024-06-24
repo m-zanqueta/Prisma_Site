@@ -200,7 +200,13 @@ namespace AppLoginAspCoreHL.Controllers
             return RedirectToAction(nameof(Carrinho));
         }
 
-        DateTime data;
+        [ClienteAutorizacao]
+        public IActionResult ConfirmaEndereco()
+        {
+            return View(_enderecoRepository.ObterEndereco(_loginCliente.GetCliente().Id));
+        }
+
+
         [ClienteAutorizacao]
         public IActionResult SalvarCarrinho(Pedido pedido)
         {
@@ -212,7 +218,6 @@ namespace AppLoginAspCoreHL.Controllers
                 ItensPedido mdI = new ItensPedido();
 
                 mdE.Id_usu = _loginCliente.GetCliente().Id;
-                mdE.Horario_ped = data;
                 mdE.Situacao = PedidoTipoConstant.Andamento;
 
 
@@ -233,6 +238,7 @@ namespace AppLoginAspCoreHL.Controllers
                 _pedidoRepository.InputValor(Math.Round(valorTotalItens, 2), pedido.Id_pedido);
 
                 _cookieCarrinhoCompra.RemoverTodos();
+                ViewData["NumPedido"] = pedido.Id_pedido;
                 return View(_itemRepository.ObterTodosItensPedido(pedido.Id_pedido, mdE.Id_usu));
             }
             return RedirectToAction(nameof(Carrinho));

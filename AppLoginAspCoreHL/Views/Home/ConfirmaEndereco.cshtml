@@ -1,0 +1,47 @@
+﻿@model AppLoginAspCoreHL.Models.Endereco
+
+@{
+    ViewData["Title"] = "Confirmação";
+}
+
+<div>
+    <h4>Confirme as informações do endereço de entrega</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.cep)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.cep)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.bairro)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.bairro)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.rua)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.rua)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.logradouro)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.logradouro)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.complemento)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.complemento)
+        </dd>
+    </dl>
+</div>
+<div>
+    <div class="col-md-6"><a class="btn btn-success btn-continuar-comprando" asp-action="SalvarCarrinho" asp-controller="Home" onclick="return confirm('Todas as informações estão corretas?')">
+        Finalizar Compra</a></div><br/>
+    <div class="col-md-6"><a asp-action="Index" class="btn btn-secondary">Voltar</a></div>
+</div>
