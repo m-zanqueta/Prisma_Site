@@ -84,20 +84,25 @@
 
 <div>
     <a asp-action="Index">Back to List</a>
-</div> *@
+</div>
+ *@
 
-<div class="container">
-    <div class="user-info">
-        <img src="~/images/user-icon.png" alt="User Icon" class="user-icon" />
-        <div class="user-details">
+ <div class="container" style="">
+    @*   <div class="user-info">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle espaco2" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+        </svg>        <div class="user-details">
             <h2>Nome Completo User</h2>
             <p>Emailuser@gmail.com</p>
         </div>
-    </div>
+    </div> *@
+
     <h3 class="form-title">Dados do usuário</h3>
     <form asp-action="Cadastrar" class="form-horizontal">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+        
         <div class="form-group">
             <input asp-for="Nome" class="form-control" placeholder="Nome completo" />
             <span asp-validation-for="Nome" class="text-danger"></span>
@@ -117,21 +122,27 @@
             <input asp-for="Login" class="form-control" placeholder="Email" />
             <span asp-validation-for="Login" class="text-danger"></span>
         </div>
+        
 
         <div class="form-group">
-            <input asp-for="Endereco.estado.uf" class="form-control" placeholder="Estado" />
-            <span asp-validation-for="Endereco.estado.uf" class="text-danger"></span>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Endereco.estado.uf, ViewBag.ListaEstados as SelectList, "Selecione o Estado",
+                         htmlAttributes: new { @class = "form-control" })
+            </div>
         </div>
+        
 
+        <section style="display:flex">
         <div class="form-group">
             <input asp-for="Endereco.rua" class="form-control" placeholder="Endereço" />
             <span asp-validation-for="Endereco.rua" class="text-danger"></span>
         </div>
 
-        <div class="form-group">
+            <div class="form-group" style="margin-left: 10px;">
             <input asp-for="Endereco.complemento" class="form-control complemento" placeholder="Complemento" />
             <span asp-validation-for="Endereco.complemento" class="text-danger"></span>
         </div>
+        </section>
 
         <div class="form-group">
             <input asp-for="Senha" class="form-control" type="password" placeholder="Senha" />
@@ -157,13 +168,6 @@
         display: flex;
         align-items: center;
         margin-bottom: 20px;
-    }
-
-    .user-icon {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        margin-right: 15px;
     }
 
     .user-details {
@@ -210,11 +214,7 @@
             color: #a0aec0;
         }
 
-    .complemento {
-        display: inline-block;
-        width: calc(50% - 5px);
-        margin-left: 10px;
-    }
+
 
     .btn-success {
         background-color: #38a169;
