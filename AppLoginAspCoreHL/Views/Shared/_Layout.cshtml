@@ -11,7 +11,30 @@
     <link rel="stylesheet" href="~/AppLoginAspCore.styles.css" asp-append-version="true" />
 
     <style>
-     
+
+
+   
+                .footer .column p, .footer .column a {
+                    color: #bbb;
+                    text-decoration: none;
+                    margin: 5px 0;
+                    display: block;
+                    min-width:300px;
+                }
+
+                    .footer .column a:hover {
+                        color: #fff;
+                    }
+
+            .footer .bottom {
+                text-align: center;
+                padding: 10px;
+                border-top: 1px solid #444;
+                margin-top: 20px;
+                flex-basis: 100%;
+            }
+
+
     </style>
 </head>
 <body>
@@ -124,7 +147,9 @@
             @RenderBody()
         </main>
     </div>
+@* 
 
+@* 
     <div class="container">
         <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
@@ -138,6 +163,37 @@
                 </li>
             </ul>
             <p class="text-center text-muted">&copy; 2022 Company, Inc</p>
+        </footer> *@
+
+
+
+    <footer class="footer" style=" background-color:#070A0E; color:#fff; display:flex; justify-content:space-between; padding: 20px 50px; flex-wrap: wrap;">
+            <div class="t">
+                <img src="~/img/identidade/footer_logo.png" style="height:100px"  alt="Livraria Prisma Logo">
+                <p>"Descubra novas perspectivas!"</p>
+            </div>
+            <div class="column">
+                <h3>Contato</h3>
+                <p>R. Guaipá, 678 - Vila Leopoldina</p>
+                <p>Email: prismaliv@gmail.com</p>
+                <p>Telefone: +55 11 98996-1293</p>
+            </div>
+            <div class="column">
+                <h3>Redes Sociais</h3>
+            <a href="https://www.instagram.com/prismalivraria/?utm_source=ig_web_button_share_sheet">Instagram: prismalivraria</a>
+                <a href="https://facebook.com/prismalivraria">Facebook: prismalivraria</a>
+                <a href="https://twitter.com/prismalivros">X: prismalivros</a>
+            </div>
+            <div class="column">
+                <h3>Saiba Mais</h3>
+                <a href="#">Sobre nós</a>
+                <a href="#">Cadastre um livro</a>
+                <a href="#">Entre em contato</a>
+            </div>
+
+        <div class="bottom">
+                &copy; 2024 Prisma Livraria | Todos direitos reservados
+            </div>
         </footer>
 
         @* Css Geral *@
