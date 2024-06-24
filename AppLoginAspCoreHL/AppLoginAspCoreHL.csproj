@@ -29,6 +29,7 @@
     <Folder Include="Areas\Colaborador\Models\" />
     <Folder Include="wwwroot\css\img\" />
     <Folder Include="wwwroot\img\livro\" />
+    <Folder Include="wwwroot\img\livro\" />
   </ItemGroup>
 
   <ItemGroup>
