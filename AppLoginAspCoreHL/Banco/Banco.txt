@@ -1,8 +1,12 @@
 drop database dblivrariatcc;
 
+
+
 /* Criando o banco */
 create database dbLivrariaTCC;
 use dbLivrariaTCC;
+
+
 
 /*Criando as tabelas*/
 create table categoria(
@@ -14,7 +18,7 @@ create table livros(
 Id_liv int primary key auto_increment,
 Id_cat int not null,
 QtEstoque int not null,
-Desc_liv varchar(250) not null,
+Desc_liv varchar(2000) not null,
 Image_liv varchar(200) not null,
 Nu_paginas int not null,
 Preco_liv double not null,
@@ -95,6 +99,7 @@ categoria.nm_cat
 from livros inner join categoria on livros.Id_cat = categoria.Id_CAT;
 
 
+
 /* Fazendo as procedures */
 
 DELIMITER $$
@@ -152,24 +157,24 @@ BEGIN
     COMMIT;
 END $$
 /*call pcd_CadLivro(1, 23, "Muy bueno", "tec.png", 500, 29.90, "IoT", "Fabrizio", "H");*/
- 
 
 
-/* Fazendo os updates */
-update livros set Situacao_liv = "D" where Id_liv=1;
 
 /*Realizando os Inserts*/
 
 insert into administrador values(default, "Lorenzo", "lorenzo@admin.com", "admin00", "G");
 insert into administrador values(default, "Henrique", "henrique@admin.com", "admin01", "C");
+
 insert into categoria values (default, "Romance");
 insert into categoria values (default, "Terror");
 insert into categoria values (default, "Aventura");
+
 /*insert into pedido values (default, 1, CURRENT_TIMESTAMP(), 0, "A");
 insert into itens_pedido values(default, 1, 1, 2, 20.00);
 insert into itens_pedido values(default, 1, 2, 1, 30.00);
 insert into itens_pedido values(default, 2, 3, 4, 100.00);
 insert into itens_pedido values(default, 8, 2, 2, "91,8");*/
+
 INSERT INTO estado ( nm_estado, uf_estado) VALUES
 ('Acre', 'AC'),
 ('Alagoas', 'AL'),
@@ -199,7 +204,66 @@ INSERT INTO estado ( nm_estado, uf_estado) VALUES
 ('São Paulo', 'SP'),
 ('Tocantins', 'TO');
 
+	insert into livros values(default, 1, 23, " Seis autoras extraordinárias. Seis histórias de amor entrelaçadas. Uma noite que tinha tudo para ser um desastre ― mas acaba sendo brilhante. Uma onda de calor causa um apagão em Nova York. Multidões se formam nas ruas, o metrô para de funcionar e o trânsito fica congestionado. Conforme o sol se põe e a escuridão toma conta da cidade, seis jovens casais veem outro tipo de eletricidade surgir no ar…
+	Um primeiro encontro ao acaso. Amigos de longa data. Ex-namorados ressentidos. Duas garotas feitas uma para a outra. Dois garotos escondidos sob máscaras. Um namoro repleto de dúvidas.
+	Quando as luzes se apagam, os sentimentos se acendem. Relacionamentos se transformam, o amor desperta e novas possibilidades surgem ― até que a noite atinge seu ápice numa festa a céu aberto no Brooklyn.
+	Neste romance envolvente e apaixonante, composto de seis histórias interligadas, as aclamadas autoras Dhonielle Clayton, Tiffany D. Jackson, Nic Stone, Angie Thomas, Ashley Woodfolk e Nicola Yoon celebram o amor entre adolescentes negros e nos dão esperança mesmo quando já não há mais luz.", "/img/livro/blackout.jpg", 272, 31.99, "Blackout: O amor também brilha no escuro", "Dhonielle Clayton", "H");
+	insert into livros values(default, 1, 43, "Todas as suas imperfeições narra a história de Quinn e Graham. Eles se conhecem no pior dia de suas vidas; ela chega mais cedo de uma viagem para surpreender o noivo, ele testemunha a traição da namorada. E é assim que ambos acabam no corredor de um prédio, trocando confidências, biscoitos da sorte e palavras de conforto.
+	Fim da dança... se o destino não tivesse outros planos para os dois. Meses mais tarde, os acordes tocam para o casal mais uma vez e eles se reencontram. Graham está convencido de que são almas gêmeas. Quinn jamais se sentiu dessa forma antes. A intensidade do sentimento os assusta, mas eles mergulham de cabeça mesmo assim.
+	O casamento é tudo o que sonhavam, a parceria perfeita. Mesmo nos momentos difíceis, sabem que podem contar com o outro. Nenhum deles desiste do amor que sentem. Até que a primeira nota dissonante abala a sinfonia do casal. Até que Quinn parece estar disposta a trocar tudo o que é pela única coisa que não consegue ser: mãe.
+	", "/img/livro/todas.jpg", 304, 43.90, "Todas as suas (im)perfeições", "Colleen Hoover", "H");
+	insert into livros values(default, 1, 14, "Aos vinte e três anos, August Landry tem uma visão bastante cética sobre a vida. Quando se muda para Nova York e passa a dividir apartamento com as pessoas mais excêntricas ― e encantadoras ― que já conheceu, tudo o que quer é construir um futuro sólido e sem surpresas, diferente da vida que teve ao lado da mãe.
+	Até que Jane aparece. No vagão do metrô, em um dia que tinha tudo para ser um fracasso, August dá de cara com uma garota de jaqueta de couro e jeans rasgado sorrindo para ela. As duas passam a se encontrar o tempo todo e logo se envolvem, mas há um pequeno detalhe: Jane pertence, na verdade, aos anos 1970 e está perdida no tempo ― mais especificamente naquela linha de metrô, de onde nunca consegue sair.
+	August fará de tudo para ajudá-la, mas para isso terá que confrontar o próprio passado ― e, de uma vez por todas, começar a acreditar que o impossível às vezes pode se tornar realidade"
+	, "/img/livro/ultima.jpg", 304, 39.99, "Última parada", "Colleen Hoover", "H");
+	insert into livros values(default, 1, 50, "Jonas não sabe muito bem o que fazer da vida. Entre suas leituras e ideias para livros anotadas em um caderninho de bolso, ele precisa dar conta de seus turnos no Rocket Café e ainda lidar com o conservadorismo de seus pais. Sua mãe alimenta a esperança de que ele volte a frequentar a igreja, e seu pai não faz muito por ele além de trazer problemas.
+	Mas é quando conhece Arthur, um belo garoto de barba ruiva, que Jonas passa a questionar por quanto tempo conseguirá viver sob as expectativas de seus pais, fingindo ser uma pessoa diferente de quem é de verdade. Buscando conforto em seus amigos (e na sua história sobre dois piratas bonitões que se parecem muito com ele e Arthur), Jonas entenderá o verdadeiro significado de família e amizade, e descobrirá o poder de uma boa história.
+	", "/img/livro/ummilhao.jpg", 352, 25.99, "Um milhão de finais felizes", "Vitor Martins", "H");
+	insert into livros values(default, 1, 23, "Nenhum encontro é por acaso.A vida tem sido boa para Lucas. Ele passou no Enem para estudar publicidade; se mudou com Eric, seu melhor amigo, do interior do Rio Grande do Norte para a capital; e conseguiu sua tão aguardada liberdade. Mas, no amor, Lucas é um desastre. O maior fã de Katy Perry no Nordeste tem certeza de que nem toda a sorte do mundo poderia fazer com que ele finalmente se apaixonasse pela primeira vez.
+	Até que, em uma despretensiosa noite de sábado em 2015, tudo muda. Quando Lucas e Eric vão na inauguração do Titanic, a mais nova balada da cidade, Lucas esbarra (literalmente!) em Pierre, um lindo garoto francês que parece ter saído dos seus sonhos. Em meio a drinques, segredos e sonhos partilhados, Lucas e Pierre se conectam instantaneamente. Eles vivem o encontro mais especial de suas vidas, mas o Universo tem outros planos para o futuro… Até a noite acabar, o que será que vai acontecer com eles?
+	Com uma voz original e divertida, repleta de referências pop e à cultura do Rio Grande do Norte, o livro de estreia de Pedro Rhuas vai te fazer rir alto e se apaixonar.
+	“Com protagonistas LGBTQIAP+ e ambientado no Nordeste, o clássico clichê de encontros e desencontros ganha nova força neste delicioso romance de Pedro Rhuas. Um livro divertidíssimo e apaixonante, para deixar o leitor torcendo pelo felizes para sempre.” ― Clara Alves, autora de Conectadas
+	“Com o ritmo contagiante de uma música que não sai da cabeça, Enquanto eu não te encontro me deixou com um sorriso no rosto e uma vontade incontrolável de dançar.” ― Vitor Martins, autor de Quinze dias e Um milhão de finais felizes
+	", "/img/livro/enquanto.jpg", 272, 31.92, "Enquanto eu não te encontro", "Pedro Rhuas ", "H");
 
+insert into livros values(default, 2, 3, " Durante as férias de 1958, em uma pacata cidadezinha chamada Derry, um grupo de sete amigos começa a ver coisas estranhas. Um conta que viu um palhaço, outro que viu uma múmia. Finalmente, acabam descobrindo que estavam todos vendo a mesma coisa: um ser sobrenatural e maligno que pode assumir várias formas. É assim que Bill, Beverly, Eddie, Ben, Richie, Mike e Stan enfrentam a Coisa pela primeira vez.
+Quase trinta anos depois, o grupo volta a se encontrar. Mike, o único que permaneceu em Derry, dá o sinal ― uma nova onda de terror tomou a pequena cidade. É preciso unir forças novamente. Só eles têm a chave do enigma. Só eles sabem o que se esconde nas entranhas de Derry. Só eles podem vencer a Coisa.
+“Mesmo depois de tantos anos, o público continua obcecado por IT. Ficamos obcecados porque todos temos medos. Todos temos algo que nos assusta, sejam palhaços e aranhas ou coisas que se escondem em um lugar muito mais profundo de nossa mente. Este livro fala com todo mundo. É o romance mais assustador de King, e duvido que isso vá mudar” ― The Guardian
+", "/img/livro/it.jpg", 1104, 79.50, "IT: A Coisa", "Stephen King", "H");
+insert into livros values(default, 2, 22, "Ambientado na cidadezinha de Jerusalem`s Lot, na Nova Inglaterra, conta a história de três forasteiros. Ben Mears, um escritor que viveu alguns anos na cidade quando criança e está disposto a acertar contas com o próprio passado, Mark Petrie, um menino obcecado por monstros e filmes de terror e o Senhor Barlow, uma figura misteriosa que decide abrir uma loja na cidade.
+Após a chegada desses forasteiros, fatos inexplicáveis começam perturbar a rotina provinciana de Jerusalem`s Lot: uma criança é encontrada morta, habitantes começam a desaparecer sem deixar vestígios ou sucumbem a uma estranha doença. A morte passa a envolver a pequena cidade com seu toque maléfico e Ben e Mark são obrigados a escolher o único caminho que resta aos sobreviventes da praga: fugir.
+Mas isso não será tão simples: os destinos de Ben, Mark, Barlow e Jerusalem`s Lot estão agora para sempre interligados.
+", "/img/livro/salem.jpg", 464, 59.28, "Salem", "Stephen King", "H");
+insert into livros values(default, 2, 39, "The Call of Cthulhu (O Chamado de Cthulhu em português) é um conto de horror do escritor norte-americano H. P. Lovecraft, contando a investigação sobre um ser extraterrestre dos antigos, que na mitologia lovecraftiana seriam criaturas cósmicas, vindas à Terra antes desta abrigar a vida.[1]
+Cthulhu é um deus que nas primeiras páginas do conto aparece como um ídolo de argila quase indescritível, possuindo um culto multimilenar dedicado a trazê-lo de volta — um retorno que desencadearia o fim da humanidade.
+", "/img/livro/cthulhu.jpg", 240, 25.42, "O chamado de Cthulhu", "H. P. Lovecraft", "H");
+insert into livros values(default, 2, 9, "Psicose, o clássico de Robert Bloch, foi publicado originalmente em 1959, livremente inspirado no caso do assassino de Wisconsin, Ed Gein. O protagonista Norman Bates, assim como Gein, era um assassino solitário que vivia em uma localidade rural isolada, teve uma mãe dominadora, construiu um santuário para ela em um quarto e se vestia com roupas femininas. Em Psicose, sem edição no Brasil há 50 anos, Bloch antecipou e prenunciou a explosão do fenômeno serial killer do final dos anos 1980 e começo dos 1990. O livro, assim com o filme de Hitchcock, tornou-se um ícone do horror, inspirando um número sem fim de imitações inferiores, assim como a criação de Bloch, o esquizofrênico violento e travestido Bates, tornou-se um arquétipo do horror incorporado a cultura pop.
+", "/img/livro/psicose.jpg", 328, 54.74, "Psicose", "Robert Bloch", "H");
+insert into livros values(default, 2, 7, "Paul Sheldon é um escritor famoso, reconhecido por uma série de best-sellers protagonizados pela mesma personagem: Misery Chastain. Annie Wilkes é uma enfermeira aposentada, leitora voraz e obcecada pela história de Misery. Quando Paul sofre um acidente de carro em uma nevasca, ele é resgatado justamente por Annie, e esse encontro entre fã e autor é o ponto de partida de uma das tramas mais aterrorizantes de Stephen King.
+", "/img/livro/louca.jpg", 328, 54.74, "Louca obsessão", "Stephen King", "H");
+insert into livros values(default, 2, 7, "Um crime brutal cometido há vinte anos, uma única sobrevivente, o retorno calculado do assassino. Em quem Victoria deve confiar? Neste thriller psicológico, Raphael Montes une romance e suspense em uma narrativa intrincada e sedutora.
+Victoria Bravo tinha quatro anos quando um homem invadiu sua casa e matou sua família a facadas, pichando seus rostos com tinta preta. Única sobrevivente, ela agora é uma jovem solitária e tímida, com pesadelos frequentes e sérias dificuldades para se relacionar. Seu refúgio é ficar em casa e observar a vida alheia pelas janelas do apartamento onde mora, na Lapa, Rio de Janeiro.
+Mas o passado bate à sua porta, e ela não sabe mais em quem pode confiar. Obrigada a enfrentar sua própria tragédia, Victoria embarca em uma jornada de amadurecimento e descoberta que a levará a zonas obscuras, mas também revelará as possibilidades do amor. Um psiquiatra, um amigo feito pela internet e um possível namorado ― qual dos três homens está usando tudo o que sabe para aterrorizar a vida de Vic? E o que afinal ele quer com ela?
+Na literatura nacional, Raphael Montes é unanimidade quando se trata de livros de suspense. Uma mulher no escuro traz sua primeira protagonista feminina e confirma o autor como um dos mais originais da atualidade ― além de deixar o leitor intrigado do começo ao fim.
+", "/img/livro/mulher.jpg", 256, 44.28, "Uma mulher no escuro", "Raphael Montes", "H");
+
+insert into livros values(default, 3, 41, "Empunhando uma espada lendária e seguindo as sábias palavras de um velho contador de histórias, 
+Eragon e o leal dragão terão de se aventurar por terras perigosas e enfrentar inimigos sombrios em um Império governado por um rei cuja 
+maldade não conhece fronteiras."
+, "/img/livro/eragon.jpeg", 468, 65.42, "Eragon", "Cristopher Paolini", "H");
+insert into livros values(default, 3, 41, "Harry Potter é um garoto órfão que vive infeliz com seus tios, os Dursleys. Ele recebe uma carta contendo um convite para ingressar em Hogwarts, uma famosa escola especializada em formar jovens bruxos. Inicialmente, Harry é impedido de ler a carta por seu tio, mas logo recebe a visita de Hagrid, o guarda-caça de Hogwarts, que chega para levá-lo até a escola. Harry adentra um mundo mágico que jamais imaginara, vivendo diversas aventuras com seus novos amigos, Rony Weasley e Hermione Granger.
+", "/img/livro/harry.jpeg", 264, 44.92, "Harry Potter e a Pedra Filosofal", "J. K. Rowling", "H");
+insert into livros values(default, 3, 19, "Um artefato precioso foi roubado do Monte Olimpo e Percy é o principal suspeito. Para restaurar a paz, ele e seus amigos – jovens heróis modernos – terão de fazer mais do que capturar o verdadeiro ladrão: precisam elucidar uma traição mais ameaçadora que fúria dos deuses.
+", "/img/livro/percy.jpeg", 400, 24.90, "O Ladrão de Raios - Percy Jackson e os Olimpianos", "Rick Riordan", "H");
+insert into livros values(default, 3, 34, "Elas estão chegando! As Lendas (ou melhor, monstros aterrorizantes que se alimentam de humanos) invadiram a cidade de Darkmouth. Elas querem dominar o mundo. Mas não entre em pânico! Finn, o último dos Caçadores de Lendas, vai nos proteger. Finn tem doze anos, adora animais, não leva muito jeito para lutar; mas é muito, muito esforçado. E todos nós sabemos que ser esforçado é a melhor arma contra um Minotauro faminto, né? Hum... Pensando bem, pode entrar em pânico. Entre em pânico agora! Corra!
+", "/img/livro/dark.jpg", 336, 10.50, "Darkmouth", "Shane Hegarty", "H");
+insert into livros values(default, 3, 4, "Os habitantes da pacata Iping têm toda razão de não conseguirem falar sobre outra coisa. O desconhecido que se hospedou na pensão local está sempre coberto da cabeça aos pés, com o rosto inteiramente envolto em bandagens. Além disso, chegou trazendo um verdadeiro laboratório portátil e um rastro de mistério, que aumenta ainda mais quando crimes começam a acontecer e quando se descobre que o homem é... invisível!
+", "/img/livro/homem.jpg", 200, 42.36, "O Homem Invisível", "H.G. Wells", "H");
+
+
+
+/* Fazendo os updates */
+update livros set Situacao_liv = "D" where Id_liv=1;
 
 
 
