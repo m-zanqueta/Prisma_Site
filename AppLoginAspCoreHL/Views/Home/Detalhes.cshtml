@@ -3,69 +3,32 @@
 @{
     ViewData["Title"] = "Detalhes";
 }
-
-<h1>Detalhes</h1>
-
-<div>
-    <h4>Livro</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Imagem)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Imagem)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.QuantidadeEstq)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.QuantidadeEstq)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Descricao)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Descricao)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NumeroPags)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NumeroPags)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Titulo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Titulo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Preco)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Preco)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Autor)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Autor)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Situacao)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Situacao)
-        </dd>
-    </dl>
-</div>
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="@Model.Imagem" alt="..." /></div>
+                <div class="col-md-6">
+                    <div class="small mb-1">@Model.Autor</div>
+                    <h1 class="display-5 fw-bolder">@Model.Titulo</h1>
+                    <div class="fs-5 mb-5">
+                        <span>@Model.Preco.ToString("C")</span>
+                    </div>
+                    <p class="lead">@Model.Descricao</p>
+                    <div class="d-flex">
+                        @using (Html.BeginForm("AdicionarItem", "Home", FormMethod.Post))
+                        {
+                            <input type="hidden" name="id" value=@Model.Id>
+                            <input type="hidden" name="quantidade" value="1">
+                            <button class="btn btn-outline-dark flex-shrink-0 btn-acao-primario" type="submit">
+                                <i class="bi-cart-fill me-1"></i>
+                                Adicionar ao carrinho
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 <div>
     @Html.ActionLink("Comprar", "AdicionarItem", new { id = Model.Id }) |
     <a asp-action="Index">Voltar</a>

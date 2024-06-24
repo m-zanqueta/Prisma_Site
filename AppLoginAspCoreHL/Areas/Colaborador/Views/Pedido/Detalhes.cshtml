@@ -33,7 +33,7 @@
                 <td>
                     <figure class="media">
                         <div class="img-wrap">
-                            <img alt="Thumbnail [300x300]" style="width: 100px; height: 100px;" src="@item.Imagem">
+                            <img alt="Thumbnail [300x300]" style="width: 70px; height: 70px;" src="@item.Imagem">
                         </div>
                     </figure>
                 </td>
@@ -47,14 +47,10 @@
                     @Html.DisplayFor(modelItem => item.QtItens)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.VlTotal)
+                    @item.VlTotal.ToString("C")
                 </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
         </tr>
 }
     </tbody>
 </table>
+<a asp-action="Index" class="btn btn-outline-primary btn-sm">Voltar</a>
