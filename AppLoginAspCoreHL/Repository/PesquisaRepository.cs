@@ -24,7 +24,7 @@ namespace AppLoginAspCoreHL.Repository
                 {
                     conexao.Open();
                     string query = "SELECT Id_liv, titulo_liv, Preco_liv, Image_liv FROM pesquisaLivro WHERE (titulo_liv LIKE @search OR " + 
-                    " Desc_liv LIKE @search OR Autor_liv LIKE @search OR nm_cat LIKE @search) AND Situacao_liv = 'H';";
+                    " Autor_liv LIKE @search OR nm_cat LIKE @search) AND Situacao_liv = 'H';";
                     using (MySqlCommand cmd = new MySqlCommand(query, conexao))
                     {
                         cmd.Parameters.AddWithValue("@search", "%" + searchString + "%");
