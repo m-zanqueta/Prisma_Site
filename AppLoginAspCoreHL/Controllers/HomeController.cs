@@ -282,5 +282,9 @@ namespace AppLoginAspCoreHL.Controllers
         {
             return View();
         }
+        public IActionResult TodosLivros() 
+        {
+            return View(_livroRepository.ObterTodosLivros());
+        }   
     }
 }
