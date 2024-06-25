@@ -3,8 +3,108 @@
 @{
     ViewData["Title"] = "Confirmação";
 }
+<head>
+    <style>
+        /* .img-fluid{
+                    width:100%;
+                    height100%;
+                } */
+    </style>
+</head>
+<div class="container py-5">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col">
+            <div class="card my-4 shadow-3">
+                <div class="row g-0">
+                    <div class="col-xl-6 d-xl-block bg-image">
+                        <img src="~/img/identidade/Imagem_compra.png" alt="Sample photo"
+                             class="img-fluid" />
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="card-body p-md-5 text-black">
+                            <h3 class="mb-4 text-uppercase">Confirmação de Endereço</h3>
 
-<div>
+
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <label class="form-label" for="form3Example8">Estado</label>
+                                <input type="text" id="form3Example8" class="form-control form-control-lg" readonly="readonly" value="@Model.estado.nome" />
+                            </div>
+
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <label class="form-label" for="form3Example8">Bairro</label>
+                                <input type="text" id="form3Example8" class="form-control form-control-lg" readonly="readonly" value="@Model.bairro" />
+                            </div>
+
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <label class="form-label" for="form3Example8">Rua</label>
+                                <input type="text" id="form3Example8" class="form-control form-control-lg" readonly="readonly" value="@Model.rua" />
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div data-mdb-input-init class="form-outline">
+                                        <label class="form-label" for="form3Example1m">Número</label>
+                                        <input type="text" id="form3Example1m" class="form-control form-control-lg" readonly="readonly" value="@Model.logradouro" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div data-mdb-input-init class="form-outline">
+                                        <label class="form-label" for="form3Example1n">Complemento (opcional)</label>
+                                        <input type="text" id="form3Example1n" class="form-control form-control-lg" readonly="readonly" value="@Model.complemento" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <label class="form-label" for="form3Example3">CEP</label>
+                                <input type="text" id="form3Example3" class="form-control form-control-lg" readonly="readonly" value="@Model.cep" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6" style="margin-left:55vw;margin-bottom:4vh;">
+                    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+                    <a data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-lg ms-2 btn-continuar-comprando" asp-action="SalvarCarrinho" asp-controller="Home" onclick="return confirm('Todas as informações estão corretas?')">
+                        Finalizar Compra
+                    </a>
+                </div>
+                <div class="col-md-6"></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* <div>
     <h4>Confirme as informações do endereço de entrega</h4>
     <hr />
     <dl class="row">
@@ -44,4 +144,4 @@
     <div class="col-md-6"><a class="btn btn-success btn-continuar-comprando" asp-action="SalvarCarrinho" asp-controller="Home" onclick="return confirm('Todas as informações estão corretas?')">
         Finalizar Compra</a></div><br/>
     <div class="col-md-6"><a asp-action="Index" class="btn btn-secondary">Voltar</a></div>
-</div>
+</div> *@
