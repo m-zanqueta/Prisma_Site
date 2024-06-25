@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<AppLoginAspCoreHL.Models.Livro>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Carrinho";
     double Subtotal = 0;
     foreach (var item in Model)
     {
@@ -19,7 +19,7 @@
 
 @if (Model.Count() == 0)
 {
-    <h2>Seu carrinho está vazio!<a asp-controller="Home" asp-action="Index">Clique aqui</a> para começar as compras... </h2>
+    <h2 class="d-flex justify-content-center" style="margin-bottom:20vw">Seu carrinho está vazio!<a asp-controller="Home" asp-action="Index">Clique aqui </a> para começar as compras... </h2>
 }
 else
 { }
