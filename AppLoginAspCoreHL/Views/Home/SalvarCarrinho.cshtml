@@ -7,7 +7,7 @@
 <h1>Pedido Realizado com sucesso</h1>
 
 <h3>Detalhes do Pedido</h3>
-<h4>Número do pedido:</h4>
+<h4>Número do pedido: @ViewData["NumPedido"]</h4>
 <table class="table">
     <thead>
         <tr>
@@ -44,7 +44,7 @@
                     @Html.DisplayFor(modelItem => item.QtItens)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.VlTotal.ToString("C"))
+                   @item.VlTotal.ToString("C")
                 </td>
             </tr>
         }

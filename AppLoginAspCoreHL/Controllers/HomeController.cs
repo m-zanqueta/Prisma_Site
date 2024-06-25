@@ -23,10 +23,11 @@ namespace AppLoginAspCoreHL.Controllers
         private IPedidoRepository _pedidoRepository;
         private IItemRepository _itemRepository;
         private IPesquisaRepository _pesquisaRepository;
+        private ICategoriaRepository _categoriaRepository;
 
         
 
-        public HomeController(IClienteRepository clienteRepository, LoginCliente loginCliente, IEnderecoRepository enderecoRepository, CookieCarrinhoCompra cookieCarrinhoCompra, ILivroRepository livroRepository, IPedidoRepository pedidoRepository, IItemRepository itemRepository, IPesquisaRepository pesquisaRepository)
+        public HomeController(IClienteRepository clienteRepository, LoginCliente loginCliente, IEnderecoRepository enderecoRepository, CookieCarrinhoCompra cookieCarrinhoCompra, ILivroRepository livroRepository, IPedidoRepository pedidoRepository, IItemRepository itemRepository, IPesquisaRepository pesquisaRepository, ICategoriaRepository categoriaRepository)
         {
             _clienteRepository = clienteRepository;
             _loginCliente = loginCliente;
@@ -36,8 +37,8 @@ namespace AppLoginAspCoreHL.Controllers
             _pedidoRepository = pedidoRepository;
             _itemRepository = itemRepository;
             _pesquisaRepository = pesquisaRepository;
+            _categoriaRepository = categoriaRepository;
         }
-
         public IActionResult Index()
         {
             return View(_livroRepository.ObterTodosLivros());
@@ -200,7 +201,13 @@ namespace AppLoginAspCoreHL.Controllers
             return RedirectToAction(nameof(Carrinho));
         }
 
-        DateTime data;
+        [ClienteAutorizacao]
+        public IActionResult ConfirmaEndereco()
+        {
+            return View(_enderecoRepository.ObterEndereco(_loginCliente.GetCliente().Id));
+        }
+
+
         [ClienteAutorizacao]
         public IActionResult SalvarCarrinho(Pedido pedido)
         {
@@ -212,7 +219,6 @@ namespace AppLoginAspCoreHL.Controllers
                 ItensPedido mdI = new ItensPedido();
 
                 mdE.Id_usu = _loginCliente.GetCliente().Id;
-                mdE.Horario_ped = data;
                 mdE.Situacao = PedidoTipoConstant.Andamento;
 
 
@@ -233,6 +239,7 @@ namespace AppLoginAspCoreHL.Controllers
                 _pedidoRepository.InputValor(Math.Round(valorTotalItens, 2), pedido.Id_pedido);
 
                 _cookieCarrinhoCompra.RemoverTodos();
+                ViewData["NumPedido"] = pedido.Id_pedido;
                 return View(_itemRepository.ObterTodosItensPedido(pedido.Id_pedido, mdE.Id_usu));
             }
             return RedirectToAction(nameof(Carrinho));
@@ -255,6 +262,16 @@ namespace AppLoginAspCoreHL.Controllers
             }
             return View(livros);
         }
+        public IActionResult SearchByCategoria(int id)
+        {
+            List<PesquisaLivro> livros = _pesquisaRepository.PesquisarLivrosPorCategoria(id);
+            if (livros.Count == 0)
+            {
+                ViewData["MSG_E"] = "Nenhum livro foi encontrado!";
+                return View("Erro");
+            }
+            return View(livros);
+        }
         public IActionResult Detalhes(int Id)
         {
             Livro liv = _livroRepository.ObterLivro(Id);
@@ -265,5 +282,9 @@ namespace AppLoginAspCoreHL.Controllers
         {
             return View();
         }
+        public IActionResult TodosLivros() 
+        {
+            return View(_livroRepository.ObterTodosLivros());
+        }   
     }
 }

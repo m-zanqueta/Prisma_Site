@@ -1,0 +1,111 @@
+﻿@inject AppLoginAspCoreHL.Libraries.Login.LoginCliente _LoginCliente
+@model List<CategoriaLiv>
+
+<header>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="margin-top:0px">
+        <div class="container-fluid" style="background-color:#7D95FF; height:130px">
+            <!-- logotipo -->
+            <a href="~/Home">  <img src="~/img/identidade/header_logo.png" style="height:100px; margin-left:2vw; margin-right:4vw" /></a>                <!--<a class="navbar-brand" href="#">Navbar</a>  -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    @if(Model != null && Model.Count > 0)
+                    {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" 
+                        aria-expanded="false" data-bs-toggle="dropdown">
+                        <i class="fas fa-list-ul"></i>Categorias
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @foreach(var categoria in Model)
+                            {
+                                <a class="dropdown-item" href="/Home/SearchByCategoria/@categoria.id">@categoria.nome</a>
+                            }
+                        </div>
+                    </li>
+                    }
+                </ul>
+
+                @* <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="O que você está procurando?" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form> *@
+
+                <form asp-controller="Home" asp-action="Search" method="get" class="d-flex" role="search">
+                    <input class="form-control me-2" type="text" name="searchString" placeholder="Pesquisar livros..." />
+                    <input class="btn btn-outline-success" style="color:white" type="submit" value="Pesquisar" />
+                </form>
+
+
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 espaco" style="margin-left:20vw">
+                    <a href="/Home/Carrinho">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="color: black" class="bi bi-cart2" viewBox="0 0 16 16">
+                            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
+                        </svg>
+                    </a>
+                    @if (_LoginCliente.GetCliente() != null)
+                    {
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                @_LoginCliente.GetCliente().Nome
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="/Home/PainelUsuario">Meu Perfil</a></li>
+                                <li><a class="dropdown-item" href="/Home/PainelEndereco">Meu Endereço</a></li>
+                                <li><a class="dropdown-item" href="/Home/LogoutCliente">Sair</a></li>
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <a href="/Home/Login">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="color:black" class="bi bi-person-circle espaco2" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                            </svg>
+                        </a>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    @* <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container-fluid">
+    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Livraria Prisma</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+    <ul class="navbar-nav flex-grow-1">
+    <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="Colaborador" asp-controller="Home" asp-action="Login">Administrador</a>
+    </li>
+    </ul>
+    <li class="nav-item dropdown" style="list-style:none">
+    @if (_LoginCliente.GetCliente() != null)
+    {
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">@_LoginCliente.GetCliente().Nome</a>
+    <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/Home/PainelUsuario">Meu Perfil</a></li>
+    <li><a class="dropdown-item" href="/Home/PainelEndereco">Meu endereço</a></li>
+    <li><a class="dropdown-item" href="/Home/LogoutCliente">Sair</a></li>
+    </ul>
+    }else
+    {
+    <a class="nav-link" href="/Home/Login"><i class="fas fa-user-alt"></i> Login</a>
+    }
+    </li>
+    </div>
+    </div>
+    </nav> *@
+</header>

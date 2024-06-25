@@ -26,16 +26,3 @@ $(document).ready(function () {
     });
     $('.selectonfocus').mask("00/00/0000", { selectOnFocus: true });
 });
-
-
-//Carrossel de Produtos
-var carouselWidth = $('.carousel-inner')[0].scrollWidth;
-var cardWidth = $('.carousel-item').width();
-
-var scrollPosition = 0;
-
-$('.carousel-control-next').on('click', function () {
-    /*console.Log("next");*/
-    scrollPosition = scrollPosition + cardWidth;
-    $('#carousel2').animate({ scrollLeft: scrollPosition }, 600);
-});

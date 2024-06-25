@@ -7,8 +7,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title> @ViewData["Title"] - Prisma</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/AppLoginAspCore.styles.css" asp-append-version="true" />
     <link rel="icon" href="~/img/icones/livroaberto.ico">
 
     <style>
@@ -39,109 +37,8 @@
     </style>
 </head>
 <body>
-    <header >
-
-        <nav class="navbar navbar-expand-lg bg-body-tertiary" style="margin-top:0px">
-            <div class="container-fluid" style="background-color:#7D95FF; height:130px">
-                <!-- logotipo -->
-                <a href="~/Home">  <img src="~/img/identidade/header_logo.png" style="height:100px; margin-left:2vw; margin-right:4vw" /></a>                <!--<a class="navbar-brand" href="#">Navbar</a>  -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Categorias
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    @* <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="O que você está procurando?" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Buscar</button>
-                    </form> *@
-
-                    <form asp-controller="Home" asp-action="Search" method="get" class="d-flex" role="search">
-                        <input class="form-control me-2" type="text" name="searchString" placeholder="Pesquisar livros..." />
-                        <input class="btn btn-outline-success" style="color:white" type="submit" value="Pesquisar" />
-                    </form>
-
-
-
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 espaco" style="margin-left:20vw">
-                        <a href="/Home/Carrinho">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="color: black" class="bi bi-cart2" viewBox="0 0 16 16">
-                                <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
-                            </svg>
-                        </a>
-                        @if (_LoginCliente.GetCliente() != null)
-                        {
-                            <div class="dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                    @_LoginCliente.GetCliente().Nome
-                                </a>
-
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li><a class="dropdown-item" href="/Home/PainelUsuario">Meu Perfil</a></li>
-                                    <li><a class="dropdown-item" href="/Home/PainelEndereco">Meu Endereço</a></li>
-                                    <li><a class="dropdown-item" href="/Home/LogoutCliente">Sair</a></li>
-                                </ul>
-                            </div>
-                        }
-                        else
-                        {
-                            <a href="/Home/Login">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="color:black" class="bi bi-person-circle espaco2" viewBox="0 0 16 16">
-                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                                </svg>
-                            </a>
-                        }
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        @* <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container-fluid">
-        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Livraria Prisma</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-        <ul class="navbar-nav flex-grow-1">
-        <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Colaborador" asp-controller="Home" asp-action="Login">Administrador</a>
-        </li>
-        </ul>
-        <li class="nav-item dropdown" style="list-style:none">
-        @if (_LoginCliente.GetCliente() != null)
-        {
-        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">@_LoginCliente.GetCliente().Nome</a>
-        <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="/Home/PainelUsuario">Meu Perfil</a></li>
-        <li><a class="dropdown-item" href="/Home/PainelEndereco">Meu endereço</a></li>
-        <li><a class="dropdown-item" href="/Home/LogoutCliente">Sair</a></li>
-        </ul>
-        }else
-        {
-        <a class="nav-link" href="/Home/Login"><i class="fas fa-user-alt"></i> Login</a>
-        }
-        </li>
-        </div>
-        </div>
-        </nav> *@
+    <header>
+        @await Component.InvokeAsync("Menu")
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -182,14 +79,13 @@
             <div class="column">
                 <h3>Redes Sociais</h3>
             <a href="https://www.instagram.com/prismalivraria/?utm_source=ig_web_button_share_sheet">Instagram: prismalivraria</a>
-                <a href="https://facebook.com/prismalivraria">Facebook: prismalivraria</a>
-                <a href="https://twitter.com/prismalivros">X: prismalivros</a>
+            <a href="https://www.facebook.com/p/Livraria-Prisma-61557928780050/">Facebook: prismalivraria</a>
             </div>
             <div class="column">
                 <h3>Saiba Mais</h3>
-                <a href="#">Sobre nós</a>
-                <a href="#">Cadastre um livro</a>
-                <a href="#">Entre em contato</a>
+            <a asp-area="" asp-controller="Home" asp-action="SaibaMais">Sobre nós</a>
+            <a asp-area="Colaborador" asp-controller="Home" asp-action="Login">Entrar como administrador</a>
+            <a href="https://br.linkedin.com/?src=go-pa&trk=sem-ga_campid.12619604099_asid.149519181275_crid.657343811728_kw.linkedin%20login_d.c_tid.kwd-12704335873_n.g_mt.e_geo.9196692&mcid=6821526239111716925&cid=&gad_source=1&gclid=EAIaIQobChMIhuOUzrT1hgMVEliRBR1zzAHbEAAYASABEgLI2_D_BwE&gclsrc=aw.ds">Acesse o linkedin</a>
             </div>
 
         <div class="bottom">
@@ -199,28 +95,109 @@
 
         @* Css Geral *@
         <link href="~/css/site.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-        @* Js Geral *@
-        <script src="~/js/site.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    @* @* Js Geral *@
 
-        @* Js página Principal *@
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
 
-        @*Links Gerais (arrumar depois) *@
-        <link rel="stylesheet" href="https:stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <script src="https:code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https:cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https:stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="http:netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-        <link rel="stylesheet" href="http:netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-        <script type="text/javascript" src="http:code.jquery.com/jquery.min.js"></script>
-        <script src="http:netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-        <link href="https:cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-        @await RenderSectionAsync("Scripts", required: false)
+
+    <script src="~/resources/lib/bootstrap-4.2.1-dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/resources/lib/feather/feather.js"></script>
+
+    <script>
+
+        $('.cep').mask('00000-000');
+        $('.phone').mask('(00) 00000-0000');
+        $('.cpf').mask('000.000.000-00', { reverse: true });
+        $('.money').mask("#.##0,00", { reverse: true });
+        $('.date').mask('00/00/0000');
+
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+
+            function limpa_formulário_cep() {
+                // Limpa valores do formulário de cep.
+                $("#Estado").val("");
+                $("#Cidade").val("");
+                $("#Endereco").val("");
+                $("#Bairro").val("");
+                $("#Complemento").val("");
+            }
+
+            //Quando o campo cep perde o foco.
+            $("#CEP").blur(function () {
+
+                //Nova variável "cep" somente com dígitos.
+                var cep = $(this).val().replace(/\D/g, '');
+
+                //Verifica se campo cep possui valor informado.
+                if (cep != "") {
+
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
+
+                    //Valida o formato do CEP.
+                    if (validacep.test(cep)) {
+
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                        $("#Estado").val("...");
+                        $("#Cidade").val("...");
+                        $("#Endereco").val("...");
+                        $("#Bairro").val("...");
+                        $("#Complemento").val("...");
+
+                        //Consulta o webservice viacep.com.br/
+                        $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
+
+                            if (!("erro" in dados)) {
+                                //Atualiza os campos com os valores da consulta.
+                                $("#Estado").val(dados.uf);
+                                $("#Cidade").val(dados.localidade);
+                                $("#Endereco").val(dados.logradouro);
+                                $("#Bairro").val(dados.bairro);
+                                $("#Complemento").val(dados.complemento);
+                            } //end if.
+                            else {
+                                //CEP pesquisado não foi encontrado.
+                                limpa_formulário_cep();
+                                alert("CEP não encontrado.");
+                            }
+                        });
+                    } //end if.
+                    else {
+                        //cep é inválido.
+                        limpa_formulário_cep();
+                        alert("Formato de CEP inválido.");
+                    }
+                } //end if.
+                else {
+                    //cep sem valor, limpa formulário.
+                    limpa_formulário_cep();
+                }
+            });
+        });
+    </script>
+
+    @* Js página Principal *@
+
+    @*Links Gerais (arrumar depois) *@
+    <link rel="stylesheet" href="https:stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https:cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="https:code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https:stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
 </body>
 </html>

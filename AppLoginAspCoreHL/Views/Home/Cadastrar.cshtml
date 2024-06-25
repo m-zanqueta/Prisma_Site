@@ -4,153 +4,292 @@
     ViewData["Title"] = "Cadastrar";
 }
 
-@* <h1>Cadastrar</h1>
+<head>
+    <style type="text/css">
+        @@media (min-width: 1025px) {
+            .h-custom {
+                height: 100vh !important;
+            }
+        }
 
-<h4>Cliente</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Cadastrar">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nascimento" class="control-label"></label>
-                <input asp-for="Nascimento" class="form-control date" type="text" placeholder="00/00/0000" />
-                <span asp-validation-for="Nascimento" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CPF" class="control-label"></label>
-                <input asp-for="CPF" class="form-control cpf" placeholder="000.000.000-00" />
-                <span asp-validation-for="CPF" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Telefone" class="control-label"></label>
-                <input asp-for="Telefone" class="form-control phone_with_ddd" placeholder="(00) 0000-0000" />
-                <span asp-validation-for="Telefone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Login" class="control-label"></label>
-                <input asp-for="Login" class="form-control" />
-                <span asp-validation-for="Login" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Senha" class="control-label"></label>
-                <input asp-for="Senha" class="form-control" type="password" />
-                <span asp-validation-for="Senha" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Endereco.estado.uf" class="control-label"></label>
-                <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.Endereco.estado.uf, ViewBag.ListaEstados as SelectList, "Selecione o Estado",
-                             htmlAttributes: new { @class = "form-control" })
+        .card-registration .select-input.form-control[readonly]:not([disabled]) {
+            font-size: 1rem;
+            line-height: 2.15;
+            padding-left: .75em;
+            padding-right: .75em;
+        }
+
+        .card-registration .select-arrow {
+            top: 13px;
+        }
+
+        .bg-indigo {
+            background-color: #4835d4;
+        }
+
+        @@media (min-width: 992px) {
+            .card-registration-2 .bg-indigo {
+                border-top-right-radius: 15px;
+                border-bottom-right-radius: 15px;
+            }
+        }
+
+        @@media (max-width: 991px) {
+            .card-registration-2 .bg-indigo {
+                border-bottom-left-radius: 15px;
+                border-bottom-right-radius: 15px;
+            }
+        }
+    </style>
+</head>
+
+<form asp-action="Cadastrar">
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<section class="h-100 h-custom gradient-custom-2">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12">
+                <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                    <div class="card-body p-0">
+                        <div class="row g-0">
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <h3 class="fw-normal mb-5" style="color: #4835d4;">Informações Gerais</h3>
+
+                                    <div class="mb-4 pb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <label class="form-label">Nome Completo</label>
+                                            <input asp-for="Nome" type="text" class="form-control form-control-lg" />
+                                            <span asp-validation-for="Nome" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4 pb-2">
+
+                                            <div data-mdb-input-init class="form-outline">
+                                                <label class="form-label">Nascimento</label>
+                                                <input type="text" asp-for="Nascimento" class="form-control form-control-lg date" />
+                                                <span asp-validation-for="Nascimento" class="text-danger"></span>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6 mb-4 pb-2">
+
+                                            <div data-mdb-input-init class="form-outline">
+                                                <label class="form-label">CPF</label>
+                                                <input type="text" asp-for="CPF" class="form-control form-control-lg cpf" />
+                                                <span asp-validation-for="CPF" class="text-danger"></span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 pb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <label class="form-label">Telefone</label>
+                                            <input asp-for="Telefone" type="text" class="form-control form-control-lg phone" />
+                                            <span asp-validation-for="Telefone" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 pb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <label class="form-label">Email de Login</label>
+                                            <input asp-for="Login" type="text" class="form-control form-control-lg" />
+                                            <span asp-validation-for="Login" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 pb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <label class="form-label">Senha</label>
+                                            <input asp-for="Senha" type="password" class="form-control form-control-lg" />
+                                            <span asp-validation-for="Senha" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 bg-indigo text-white">
+                                <div class="p-5">
+                                    <h3 class="fw-normal mb-5">Detalhes de Endereço</h3>
+
+                                    <div class="mb-4 pb-2">
+                                        <div data-mdb-input-init class="form-outline form-white">
+                                            <label class="form-label">CEP</label>
+                                            <input type="text" asp-for="Endereco.cep" class="form-control form-control-lg cep" id="CEP" />
+                                            <span asp-validation-for="Endereco.cep" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 pb-2">
+                                            <div data-mdb-input-init class="form-outline form-white">
+                                            <div class="col-md-10">
+                                                @Html.DropDownListFor(model => model.Endereco.estado.uf, ViewBag.ListaEstados as SelectList, "Estado",
+                                                         htmlAttributes: new { @class = "form-control", @id = "Estado" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 pb-2">
+                                        <div data-mdb-input-init class="form-outline form-white">
+                                            <label class="form-label">Bairro</label>
+                                            <input type="text" asp-for="Endereco.bairro" class="form-control form-control-lg" id="Bairro" />
+                                            <span asp-validation-for="Endereco.bairro" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 pb-2">
+                                        <div data-mdb-input-init class="form-outline form-white">
+                                            <label class="form-label">Rua</label>
+                                            <input type="text" asp-for="Endereco.rua" class="form-control form-control-lg" id="Endereco" />
+                                            <span asp-validation-for="Endereco.rua" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row">
+                                        <div class="col-md-5 mb-4 pb-2">
+
+                                            <div data-mdb-input-init class="form-outline form-white">
+                                                <label class="form-label">Número</label>
+                                                <input type="number" asp-for="Endereco.logradouro" class="form-control form-control-lg" min="0" />
+                                                <span asp-validation-for="Endereco.logradouro" class="text-danger"></span>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-7 mb-4 pb-2">
+                                            <label class="form-label">Complemento</label>
+                                            <input type="text" asp-for="Endereco.complemento" class="form-control form-control-lg" placeholder="Opcional"/>
+                                            <span asp-validation-for="Endereco.complemento" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-check d-flex justify-content-start mb-4 pb-3">
+                                        <input class="form-check-input me-3" type="checkbox" value="" required />
+                                        <label class="form-check-label text-white" for="form2Example3">
+                                            Eu aceito os <a href="#!" class="text-white"><u>Termos e Condiçoes</u></a> do site.
+                                        </label>
+                                    </div>
+
+                                        <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-light btn-lg"
+                                            data-mdb-ripple-color="dark">
+                                        Casdastrar
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Endereco.cep" class="control-label"></label>
-                <input asp-for="Endereco.cep" class="form-control cep" placeholder="00000-000" />
-                <span asp-validation-for="Endereco.cep" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Endereco.bairro" class="control-label"></label>
-                <input asp-for="Endereco.bairro" class="form-control" />
-                <span asp-validation-for="Endereco.bairro" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Endereco.rua" class="control-label"></label>
-                <input asp-for="Endereco.rua" class="form-control" />
-                <span asp-validation-for="Endereco.rua" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Endereco.logradouro" class="control-label"></label>
-                <input asp-for="Endereco.logradouro" class="form-control" type="number" />
-                <span asp-validation-for="Endereco.logradouro" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Endereco.complemento" class="control-label"></label>
-                <input asp-for="Endereco.complemento" class="form-control" />
-                <span asp-validation-for="Endereco.complemento" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
- *@
-
- <div class="container" style="">
-    @*   <div class="user-info">
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle espaco2" viewBox="0 0 16 16">
-            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-        </svg>        <div class="user-details">
-            <h2>Nome Completo User</h2>
-            <p>Emailuser@gmail.com</p>
         </div>
-    </div> *@
+    </div>
+</section>
+</form>
 
-    <h3 class="form-title">Dados do usuário</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* <h3 class="form-title">Dados do usuário</h3>
     <form asp-action="Cadastrar" class="form-horizontal">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-        
+
         <div class="form-group">
             <input asp-for="Nome" class="form-control" placeholder="Nome completo" />
             <span asp-validation-for="Nome" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <input asp-for="CPF" class="form-control" placeholder="CPF" />
+        <input asp-for="CPF" class="form-control cpf" placeholder="CPF" />
             <span asp-validation-for="CPF" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <input asp-for="Telefone" class="form-control" placeholder="Telefone" />
+        <input asp-for="Telefone" class="form-control phone" placeholder="Telefone" />
             <span asp-validation-for="Telefone" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <input asp-for="Login" class="form-control" placeholder="Email" />
+        <input asp-for="Nascimento" class="form-control date" placeholder="Nascimento" type="text"/>
+            <span asp-validation-for="Nascimento" class="text-danger" />
+        </div>
+
+        <div class="form-group">
+            <input asp-for="Login" class="form-control" placeholder="Email para login" />
             <span asp-validation-for="Login" class="text-danger"></span>
         </div>
-        
+
 
         <div class="form-group">
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Endereco.estado.uf, ViewBag.ListaEstados as SelectList, "Selecione o Estado",
-                         htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.Endereco.estado.uf, ViewBag.ListaEstados as SelectList, "Estado",
+                         htmlAttributes: new { @class = "form-control" , @id = "Estado"})
             </div>
         </div>
-        
 
-        <section style="display:flex">
+
         <div class="form-group">
-            <input asp-for="Endereco.rua" class="form-control" placeholder="Endereço" />
+            <input asp-for="Endereco.rua" class="form-control" placeholder="Rua" id="Endereco"/>
             <span asp-validation-for="Endereco.rua" class="text-danger"></span>
         </div>
 
-            <div class="form-group" style="margin-left: 10px;">
-            <input asp-for="Endereco.complemento" class="form-control complemento" placeholder="Complemento" />
+    <div class="form-group">
+        <input asp-for="Endereco.logradouro" class="form-control" placeholder="Logradouro" type="number" min="0" id="Endereco" />
+        <span asp-validation-for="Endereco.logradouro" class="text-danger"></span>
+    </div>
+
+        <div class="form-group">
+            <input asp-for="Endereco.bairro" class="form-control" placeholder="Bairro" id="Bairro"/>
+            <span asp-validation-for="Endereco.bairro" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+        <input asp-for="Endereco.cep" class="form-control cep" placeholder="CEP" id="CEP"/>
+            <span asp-validation-for="Endereco.cep" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input asp-for="Endereco.complemento" class="form-control" placeholder="Complemento (opcional)" />
             <span asp-validation-for="Endereco.complemento" class="text-danger"></span>
         </div>
-        </section>
 
         <div class="form-group">
             <input asp-for="Senha" class="form-control" type="password" placeholder="Senha" />
             <span asp-validation-for="Senha" class="text-danger"></span>
         </div>
 
+
+
+
+
         <div class="form-group">
-            <input type="submit" value="Salvar" class="btn btn-success btn-block" />
+            <input type="submit" value="Create" class="btn btn-primary" />
         </div>
     </form>
 </div>
@@ -230,5 +369,5 @@
         .btn-success:hover {
             background-color: #2f855a;
         }
-</style>
+</style> *@
 

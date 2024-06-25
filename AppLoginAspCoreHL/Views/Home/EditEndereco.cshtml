@@ -8,7 +8,94 @@
 
 <h4>Endereco</h4>
 <hr />
-<div class="row">
+
+<form asp-action="EditEndereco">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input asp-for="id" class="form-control" type="hidden" />
+    <div class="col-xl-6">
+        <div class="card-body p-md-5 text-black">
+            <h3 class="mb-4 text-uppercase">Edição de Endereço</h3>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label asp-for="cep" class="form-label"></label>
+                <input asp-for="cep" class="form-control form-control-lg cep" id="CEP"/>
+                <span asp-validation-for="cep" class="text-danger"></span>
+            </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label asp-for="estado.uf" class="control-label"></label>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.estado.uf, ViewBag.ListaEstados as SelectList, "Selecione o Estado",
+                             htmlAttributes: new { @class = "form-control", @id="Estado" })
+                </div>
+            </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label asp-for="bairro" class="form-label"></label>
+                <input asp-for="bairro" class="form-control form-control-lg" id="Bairro" />
+                <span asp-validation-for="bairro" class="text-danger"></span>
+            </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label asp-for="rua" class="form-label"></label>
+                <input asp-for="rua" class="form-control form-control-lg" id="Endereco" />
+                <span asp-validation-for="rua" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div data-mdb-input-init class="form-outline">
+                        <label asp-for="logradouro" class="form-label"></label>
+                        <input asp-for="logradouro" class="form-control form-control-lg" min="0" />
+                        <span asp-validation-for="logradouro" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div data-mdb-input-init class="form-outline">
+                        <label asp-for="complemento" class="form-label"></label>
+                        <input asp-for="complemento" class="form-control form-control-lg" />
+                        <span asp-validation-for="complemento" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6"><input class="btn btn-primary profile-button" type="submit" value="Salvar"></div><br />
+            <div class="col-md-6"><a asp-action="Index" class="btn btn-secondary">Voltar</a></div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* <div class="row">
     <div class="col-md-4">
         <form asp-action="EditEndereco">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -56,5 +143,5 @@
 
 <div>
     <a asp-action="Index">Back to List</a>
-</div>
+</div> *@
 
