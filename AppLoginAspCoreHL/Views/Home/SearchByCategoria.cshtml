@@ -10,14 +10,6 @@
     </style>
 </head>
 
-@* <form asp-controller="Home" asp-action="Search" method="get">
-    <div class="form-group">
-        <label for="searchString">Pesquisar Livro:</label>
-        <input type="text" id="searchString" name="searchString" class="form-control" value="@ViewBag.CurrentFilter">
-    </div>
-    <button type="submit" class="btn btn-primary">Pesquisar</button>
-</form> *@
-    
 
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
@@ -49,73 +41,12 @@
                             {
                                 <input type="hidden" name="id" value=@livro.Id_liv>
                                 <input type="hidden" name="quantidade" value="1">
-                                <button type="submit" class="btn btn-primary btn-acao-primario" style="background-color:#7D95FF; border-color:#7D95FF ; transition: transform 2s";>Adicionar</button>
+                                <button type="submit" class="btn btn-primary btn-acao-primario" style="background-color:#7D95FF; border-color:#7D95FF ; transition: transform 2s" ;>Adicionar</button>
                             }
                         </div>
                     </div>
                 </div>
             }
-        </<div>
-    </<div>
+            </<div>
+                </<div>
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@*                     @if (Model != null && Model.Count > 0)
-                    {
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Título</th>
-                                    <th>Descrição</th>
-                                    <th>Autor</th>
-                                    <th>Categoria</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var livro in Model)
-                                {
-                                    <tr>
-                                        <td>@livro.Titulo_liv</td>
-                                        <td>@livro.Desc_liv</td>
-                                        <td>@livro.Autor_liv</td>
-                                        <td>@livro.Nm_cat</td>
-                                        <td>
-                                            <a asp-action="Detalhes" asp-controller="Home" asp-route-id="@livro.Id_liv" class="btn btn-info">Detalhes</a>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
- 
-                    } *@

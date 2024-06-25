@@ -23,10 +23,11 @@ namespace AppLoginAspCoreHL.Controllers
         private IPedidoRepository _pedidoRepository;
         private IItemRepository _itemRepository;
         private IPesquisaRepository _pesquisaRepository;
+        private ICategoriaRepository _categoriaRepository;
 
         
 
-        public HomeController(IClienteRepository clienteRepository, LoginCliente loginCliente, IEnderecoRepository enderecoRepository, CookieCarrinhoCompra cookieCarrinhoCompra, ILivroRepository livroRepository, IPedidoRepository pedidoRepository, IItemRepository itemRepository, IPesquisaRepository pesquisaRepository)
+        public HomeController(IClienteRepository clienteRepository, LoginCliente loginCliente, IEnderecoRepository enderecoRepository, CookieCarrinhoCompra cookieCarrinhoCompra, ILivroRepository livroRepository, IPedidoRepository pedidoRepository, IItemRepository itemRepository, IPesquisaRepository pesquisaRepository, ICategoriaRepository categoriaRepository)
         {
             _clienteRepository = clienteRepository;
             _loginCliente = loginCliente;
@@ -36,8 +37,8 @@ namespace AppLoginAspCoreHL.Controllers
             _pedidoRepository = pedidoRepository;
             _itemRepository = itemRepository;
             _pesquisaRepository = pesquisaRepository;
+            _categoriaRepository = categoriaRepository;
         }
-
         public IActionResult Index()
         {
             return View(_livroRepository.ObterTodosLivros());
@@ -255,6 +256,16 @@ namespace AppLoginAspCoreHL.Controllers
         {
             List<PesquisaLivro> livros = _pesquisaRepository.PesquisarLivros(searchString);
             if(livros.Count == 0)
+            {
+                ViewData["MSG_E"] = "Nenhum livro foi encontrado!";
+                return View("Erro");
+            }
+            return View(livros);
+        }
+        public IActionResult SearchByCategoria(int id)
+        {
+            List<PesquisaLivro> livros = _pesquisaRepository.PesquisarLivrosPorCategoria(id);
+            if (livros.Count == 0)
             {
                 ViewData["MSG_E"] = "Nenhum livro foi encontrado!";
                 return View("Erro");

@@ -3,54 +3,6 @@
 @{
     ViewData["Title"] = "Atualizar";
 }
-<head>
-    <style type="text/css">
-        body {
-            background: rgb(99, 39, 120)
-        }
-
-        .form-control:focus {
-            box-shadow: none;
-            border-color: #BA68C8
-        }
-
-        .profile-button {
-            background: rgb(99, 39, 120);
-            box-shadow: none;
-            border: none
-        }
-
-            .profile-button:hover {
-                background: #682773
-            }
-
-            .profile-button:focus {
-                background: #682773;
-                box-shadow: none
-            }
-
-            .profile-button:active {
-                background: #682773;
-                box-shadow: none
-            }
-
-        .back:hover {
-            color: #682773;
-            cursor: pointer
-        }
-
-        .labels {
-            font-size: 11px
-        }
-
-        .add-experience:hover {
-            background: #BA68C8;
-            color: #fff;
-            cursor: pointer;
-            border: solid 1px #BA68C8
-        }
-    </style>
-</head>
 <body>
 <form asp-action="EditUsuario">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -83,7 +35,7 @@
                         </div>
                         <div class="col-md-12">
                             <label asp-for="Telefone" class="labels"></label>
-                            <input asp-for="Telefone" class="form-control phone_with_ddd" placeholder="(00) 0000-0000" />
+                            <input asp-for="Telefone" class="form-control phone" placeholder="(00) 0000-0000" />
                             <span asp-validation-for="Telefone" class="text-danger"></span>
                         </div>
                         <div class="col-md-12">
@@ -97,7 +49,7 @@
                             <span asp-validation-for="Senha" class="text-danger"></span>
                         </div>
                     </div><br/>
-                        <div class="col-md-6"><input class="btn btn-primary profile-button" type="submit" value="Salvar"></input></div><br/>
+                        <div class="col-md-6"><input class="btn btn-primary profile-button" type="submit" value="Salvar"></div><br/>
                         <div class="col-md-6"><a asp-action="Index" class="btn btn-secondary">Voltar</a></div>
                 </div>
             </div>
@@ -106,40 +58,9 @@
 </form>
 
 <script>
-        $(document).ready(function () {
-            $('.date').mask('00/00/0000');
-            $('.time').mask('00:00:00');
-            $('.date_time').mask('00/00/0000 00:00:00');
-            $('.cep').mask('00000-000');
-            $('.phone').mask('0000-0000');
-            $('.phone_with_ddd').mask('(00) 0000-0000');
-            $('.phone_us').mask('(000) 000-0000');
-            $('.mixed').mask('AAA 000-S0S');
-            $('.cpf').mask('000.000.000-00', { reverse: true });
-            $('.cnpj').mask('00.000.000/0000-00', { reverse: true });
-            $('.money').mask('000.000.000.000.000,00', { reverse: true });
-
-            $('.percent').mask('##0,00%', { reverse: true });
-            $('.clear-if-not-match').mask("00/00/0000", { clearIfNotMatch: true });
-            $('.placeholder').mask("00/00/0000", { placeholder: "__/__/____" });
-            $('.fallback').mask("00r00r0000", {
-                translation: {
-                    'r': {
-                        pattern: /[\/]/,
-                        fallback: '/'
-                    },
-                    placeholder: "__/__/____"
-                }
-            });
-            $('.selectonfocus').mask("00/00/0000", { selectOnFocus: true });
-        });
+        
 </script>
 </body>
-<div>
-    <a asp-action="Index">Voltar</a>
-</div>
-
-
 
 
 

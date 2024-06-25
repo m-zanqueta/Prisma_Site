@@ -25,7 +25,7 @@ namespace AppLoginAspCoreHL.Models
 
         [Display(Name = "Celular")]
         [Required(ErrorMessage = "O celular é obrigatório")]
-        [StringLength(14, MinimumLength = 13, ErrorMessage = "Insira um telefone válido")]
+        [StringLength(15, MinimumLength = 14, ErrorMessage = "Insira um telefone válido")]
         public string Telefone { get; set;}
 
 

@@ -3,10 +3,97 @@
 @{
     ViewData["Title"] = "PainelEndereco";
 }
+<head>
+    <style>
+        .title-style {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: hsl(52, 0%, 98%);
+        }
 
-<h1>PainelEndereco</h1>
+        .title-quote {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-weight: 400;
+            color: hsl(52, 0%, 98%);
+        }
+    </style>
+</head>
 
-<div>
+<div class="row g-0">
+
+    <div class="col-xl-6">
+        <div class="card-body p-md-5 text-black">
+            <h3 class="mb-4 text-uppercase">Informações do endereço</h3>
+
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="form3Example8">Estado</label>
+                <input type="text" id="form3Example8" class="form-control form-control-lg" readonly="readonly" value="@Model.estado.nome" />
+            </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="form3Example8">Bairro</label>
+                <input type="text" id="form3Example8" class="form-control form-control-lg" readonly="readonly" value="@Model.bairro" />
+            </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="form3Example8">Rua</label>
+                <input type="text" id="form3Example8" class="form-control form-control-lg" readonly="readonly" value="@Model.rua" />
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div data-mdb-input-init class="form-outline">
+                        <label class="form-label" for="form3Example1m">Número</label>
+                        <input type="text" id="form3Example1m" class="form-control form-control-lg" readonly="readonly" value="@Model.logradouro" />
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div data-mdb-input-init class="form-outline">
+                        <label class="form-label" for="form3Example1n">Complemento (opcional)</label>
+                        <input type="text" id="form3Example1n" class="form-control form-control-lg" readonly="readonly" value="@Model.complemento" />
+                    </div>
+                </div>
+            </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="form3Example3">CEP</label>
+                <input type="text" id="form3Example3" class="form-control form-control-lg" readonly="readonly" value="@Model.cep" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-6"><a asp-action="EditEndereco" asp-route-id="@Model.id" class="btn btn-primary">Atualizar</a></div>
+<br />
+<div class="col-md-6"><a asp-action="Index" class="btn btn-secondary">Voltar</a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* <div>
     <h4>Endereco</h4>
     <hr />
     <dl class="row">
@@ -51,4 +138,4 @@
 <div>
     @Html.ActionLink("Editar Endereço", "EditEndereco", new {  id = Model.id  }) |
     <a asp-action="Index">Back to List</a>
-</div>
+</div> *@
