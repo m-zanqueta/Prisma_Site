@@ -1,8 +1,21 @@
 ﻿@model IEnumerable<AppLoginAspCoreHL.Models.Livro>
 
 @{
-    ViewData["Title"] = "TodosLivros";
+    ViewData["Title"] = "Todos os Livros";
 }
+
+<head>
+    <style type="text/css">
+        button:hover {
+            transform: scale(1.2);
+        }
+
+        .checked {
+            color: orange;
+        }
+    </style>
+
+</head>
 
 <h1>Conheça todos os nossos livros</h1>
 
@@ -12,36 +25,46 @@
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
         @foreach (var livro in Model)
         {
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Product image-->
-                    <a asp-controller="Home" asp-action="Detalhes" asp-route-id="@livro.Id" style="color:black"> <img class="card-img-top" style="height: 20vw" src="@livro.Imagem" /></a>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                                <a asp-controller="Home" asp-action="Detalhes" asp-route-id="@livro.Id" style="color: black">@livro.Titulo</a>
-                            </h5>
-                            <hr />
-                            <!-- Product price-->
-                            <div style="text-align:center">
-                                @livro.Preco.ToString("C")
+                <div class="col mb-5" style="width:calc(100%/4)">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <a asp-controller="Home" asp-action="Detalhes" asp-route-id="@livro.Id" style="color:black"> <img class="card-img-top" style="height: 25vw" src="@livro.Imagem" /></a>
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                    <a asp-controller="Home" asp-action="Detalhes" asp-route-id="@livro.Id" style="color: black;">@livro.Titulo</a>
+                                </h5>
+                                <!-- Product price-->
+                                <div style="float: left">
+                                    <div style="margin-top: 1vw;">
+                                        @for (var i = 1; i <= 3; i++)
+                                        {
+                                            <span class="fa fa-star checked"></span>
+                                        }
+
+                                        @for (var o = 1; o <= 2; o++)
+                                        {
+                                            <span class="fa fa-star"></span>
+                                        }
+                                    </div>
+                                    <div style="margin-top: 1vw;margin-left:-2vw">@livro.Preco.ToString("C")</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <hr />
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex justify-content-center">
-                        @using (Html.BeginForm("AdicionarItem", "Home", FormMethod.Post))
-                        {
-                            <input type="hidden" name="id" value=@livro.Id>
-                            <input type="hidden" name="quantidade" value="1">
-                            <button type="submit" class="btn btn-primary btn-acao-primario" style="background-color:#7D95FF; border-color:#7D95FF ; transition: transform 2s" ;>Adicionar</button>
-                        }
+                        <hr />
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex justify-content-center">
+                            @using (Html.BeginForm("AdicionarItem", "Home", FormMethod.Post))
+                            {
+                                <input type="hidden" name="id" value=@livro.Id>
+                                <input type="hidden" name="quantidade" value="1">
+                                <button type="submit" class="btn btn-primary btn-acao-primario" style="background-color:#7D95FF; border-color:#7D95FF ; transition: transform 1.5s" ;>Adicionar</button>
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
         }
             </<div>
                 </<div>
