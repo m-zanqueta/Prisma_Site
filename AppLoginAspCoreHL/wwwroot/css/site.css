@@ -25,12 +25,11 @@ body {
 
 /*navbar*/
 .bg-body-tertiary {
-    .bg-body-tertiary
     background-color: #7D95FF !important;
 }
 
 .d-flex {
-    width: 35vw;
+    width: auto;
 }
 
 /*Espaçamento navbar*/
@@ -46,7 +45,7 @@ body {
 /*Tamanho Carrossel*/
 .w-100 {
     width: 100% !important;
-    height: 30vw;
+    height: auto;
     margin-top: 5vw;
 }
 
