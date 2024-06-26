@@ -11,7 +11,7 @@ namespace AppLoginAspCoreHL.Models
         public string? Imagem { get; set; }
 
         [Required(ErrorMessage = "A quantidade em estoque é obrigatória.")]
-        [Display(Name = "Em estoque")]
+        [Display(Name = "Em Estoque")]
         [Range(1, 9999, ErrorMessage = "Insira uma quantidade válida")]
         public int QuantidadeEstq { get; set; }
 

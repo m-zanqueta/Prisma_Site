@@ -14,6 +14,12 @@
         .card-hidden {
             display: none;
         }
+
+        .w-100 {
+            width: 100% !important;
+            height: auto;
+            margin-top:auto;
+        }
     </style>
 </head>
 
@@ -48,13 +54,12 @@ else
                         {
                             <tr>
                                 <td>
-                                    <figure class="media">
+                                    <figure class="media d-flex">
                                         <div class="img-wrap">
-
-                                            <img alt="Thumbnail [300x300]" style="width: 40px; height: 40px;" src="@item.Imagem">
+                                            <img alt="Thumbnail [300x300]" style="width: 70px; height: 100px;" src="@item.Imagem">
                                         </div>
-                                        <figcaption class="media-body">
-                                            <h6 class="title text-truncate">   @item.Titulo</h6>
+                                        <figcaption class="media-body" style="margin-left:1vw;">
+                                            <h6 class="title text-truncate" style="font-size:larger">   @item.Titulo</h6>
                                         </figcaption>
                                     </figure>
                                 </td>

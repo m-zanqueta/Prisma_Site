@@ -34,6 +34,7 @@ namespace AppLoginAspCoreHL.Areas.Colaborador.Controllers
         {
             Pedido ped = _pedidoRepository.ObterPedido(id);
             int idUsu = ped.Id_usu;
+            ViewData["Nm_ped"] = ped.Id_pedido;
             return View(_itemRepository.ObterTodosItensPedido(id, idUsu));
         }
     }
