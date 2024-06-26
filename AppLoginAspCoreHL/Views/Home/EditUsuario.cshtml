@@ -3,6 +3,14 @@
 @{
     ViewData["Title"] = "Atualizar";
 }
+<head>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
 <body>
 <form asp-action="EditUsuario">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -43,11 +51,16 @@
                             <input asp-for="Login" class="form-control" />
                             <span asp-validation-for="Login" class="text-danger"></span>
                         </div>
-                        <div class="col-md-12">
-                            <label asp-for="Senha" class="labels"></label>
-                            <input asp-for="Senha" class="form-control" />
-                            <span asp-validation-for="Senha" class="text-danger"></span>
-                        </div>
+                            <div class="row">
+                                <div class="col-md-10 mb-4 pb-2">
+                                    <label asp-for="Senha" class="labels"></label>
+                                    <input asp-for="Senha" class="form-control" id="password" type="password"/>
+                                    <span asp-validation-for="Senha" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-2 mb-4 pb-2" style="margin-top:42px">
+                                    <i class="bi bi-eye-slash form-i" id="togglePassword" style="cursor:pointer;"></i>
+                                </div>
+                            </div>
                     </div><br/>
                         <div class="col-md-6"><input class="btn btn-primary profile-button" type="submit" value="Salvar"></div><br/>
                         <div class="col-md-6"><a asp-action="Index" class="btn btn-secondary">Voltar</a></div>
@@ -57,9 +70,21 @@
     </div>
 </form>
 
-<script>
-        
-</script>
+    <script>
+        const togglePassword = document
+            .querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+        togglePassword.addEventListener('click', () => {
+            // Toggle the type attribute using
+            // getAttribure() method
+            const type = password
+                .getAttribute('type') === 'password' ?
+                'text' : 'password';
+            password.setAttribute('type', type);
+            // Toggle the eye and bi-eye icon
+            this.classList.toggle('bi-eye');
+        });
+    </script>
 </body>
 
 
