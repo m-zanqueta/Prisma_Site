@@ -257,7 +257,7 @@ namespace AppLoginAspCoreHL.Controllers
             List<PesquisaLivro> livros = _pesquisaRepository.PesquisarLivros(searchString);
             if(livros.Count == 0)
             {
-                ViewData["MSG_E"] = "Nenhum livro foi encontrado!";
+                ViewData["MSG_E"] = "Nenhum livro foi encontrado! ";
                 return View("Erro");
             }
             return View(livros);
@@ -267,7 +267,7 @@ namespace AppLoginAspCoreHL.Controllers
             List<PesquisaLivro> livros = _pesquisaRepository.PesquisarLivrosPorCategoria(id);
             if (livros.Count == 0)
             {
-                ViewData["MSG_E"] = "Nenhum livro foi encontrado!";
+                ViewData["MSG_E"] = "Nenhum livro foi encontrado! ";
                 return View("Erro");
             }
             return View(livros);
