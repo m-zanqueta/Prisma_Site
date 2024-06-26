@@ -16,22 +16,22 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th scope="col">@Html.DisplayNameFor(model => model.First().Id)</th>
                 <th scope="col">@Html.DisplayNameFor(model => model.First().Nome)</th>
                 <th scope="col">@Html.DisplayNameFor(model => model.First().CPF)</th>
                 <th scope="col">@Html.DisplayNameFor(model => model.First().Telefone)</th>
                 <th scope="col">@Html.DisplayNameFor(model => model.First().Login)</th>
+                <th scope="col">Ações</th>
             </tr>
         </thead>
         <tbody>
             @foreach (Cliente cliente in Model)
             {
                 <tr>
-                    <th scope="row">@cliente.Id</th>
                     <td>@cliente.Nome</td>
                     <td>@cliente.CPF</td>
                     <td>@cliente.Telefone</td>
                     <td>@cliente.Login</td>
+                    <td><a asp-action="Endereco" asp-route-id="@cliente.Id" class="btn btn-info">Endereço</a></td>
                 </tr>
             }
         </tbody>
