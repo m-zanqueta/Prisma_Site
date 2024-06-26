@@ -14,6 +14,14 @@
             color: orange;
         }
 
+        .d-flex {
+            width: auto;
+        }
+
+        .w-100 {
+            width: 100% !important;
+            height: auto;
+            margin-top: 5vw;}
     </style>
   </head>
 
@@ -76,7 +84,7 @@
                                     <a asp-controller="Home" asp-action="Detalhes" asp-route-id="@item.Id" style="color: black">"@item.Titulo"</a>
                                 </h5>
                                 <!-- Product price-->
-                                <div style="float: left">
+                                <div style="text-align:center">
                                     <div style="margin-top: 1vw">
                                         @for (var i = 1; i <= 3; i++)
                                         {
@@ -88,7 +96,7 @@
                                             <span class="fa fa-star"></span>
                                         }
                                     </div>
-                                    <div style="margin-top: 1vw; width: 4.1vw">@item.Preco.ToString("C")</div>
+                                    <div style="margin-top: 1vw;">@item.Preco.ToString("C")</div>
                                 </div>
                             </div>
                         </div>
@@ -135,7 +143,7 @@
                                     <a asp-controller="Home" asp-action="Detalhes" asp-route-id="@item.Id" style="color: black">@item.Titulo</a>
                                 </h5>
                                 <!-- Product price-->
-                                <div style="float: left">
+                                <div style="text-align:center">
                                     <div style="margin-top: 1vw">
                                         @for (var i = 1; i <= 3; i++)
                                         {
@@ -147,7 +155,7 @@
                                             <span class="fa fa-star"></span>
                                         }
                                     </div>
-                                    <div style="margin-top: 1vw; width: 4.1vw">@item.Preco.ToString("C")</div>
+                                    <div style="margin-top: 1vw;">@item.Preco.ToString("C")</div>
                                 </div>
                             </div>
                         </div>

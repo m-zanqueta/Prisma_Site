@@ -24,7 +24,7 @@
         }
 
         .bg-indigo {
-            background-color: #4835d4;
+            background-color: #7D95FF;
         }
 
         @@media (min-width: 992px) {
@@ -39,6 +39,10 @@
                 border-bottom-left-radius: 15px;
                 border-bottom-right-radius: 15px;
             }
+        }
+
+        .d-flex{
+            width:auto;
         }
     </style>
     <link rel="stylesheet"
@@ -106,14 +110,6 @@
                                             <span asp-validation-for="Login" class="text-danger"></span>
                                         </div>
                                     </div>
-
-                                    @* <div class="mb-4 pb-2">
-                                        <div data-mdb-input-init class="form-outline">
-                                            <label class="form-label">Senha</label>
-                                            <input asp-for="Senha" type="password" class="form-control form-control-lg" id="password"/>
-                                            <span asp-validation-for="Senha" class="text-danger"></span>
-                                        </div>
-                                    </div> *@
                                             <div class="row">
                                                 <div class="col-md-10 mb-4 pb-2">
 
@@ -198,7 +194,7 @@
 
                                         <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-light btn-lg"
                                             data-mdb-ripple-color="dark">
-                                        Casdastrar
+                                        Cadastrar
                                     </button>
 
                                 </div>

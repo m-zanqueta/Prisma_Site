@@ -10,15 +10,22 @@ namespace AppLoginAspCoreHL.Areas.Colaborador.Controllers
     {
 
         private IClienteRepository _clienteRepository;
+        private IEnderecoRepository _enderecoRepository;
 
-        public ClienteController(IClienteRepository clienteRepository)
+        public ClienteController(IClienteRepository clienteRepository, IEnderecoRepository enderecoRepository)
         {
             _clienteRepository = clienteRepository;
+            _enderecoRepository = enderecoRepository;
         }
 
         public IActionResult Index()
         {
             return View(_clienteRepository.ObterTodosClientes());
+        }
+
+        public IActionResult Endereco(int id)
+        {
+            return View(_enderecoRepository.ObterEndereco(id));
         }
 
     }
