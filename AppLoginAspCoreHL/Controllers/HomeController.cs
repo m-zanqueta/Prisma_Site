@@ -190,7 +190,7 @@ namespace AppLoginAspCoreHL.Controllers
         {
             if(_cookieCarrinhoCompra.Consultar().Count == 0)
             {
-                ViewData["MSG_E"] = "Seu carrinho está vazio!";
+                ViewData["MSG_E"] = "Seu carrinho está vazio! ";
                 return View("Erro");
             }
             return View(_cookieCarrinhoCompra.Consultar());
