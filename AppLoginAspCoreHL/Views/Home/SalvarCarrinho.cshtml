@@ -14,9 +14,6 @@
                 Produto
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Titulo_liv)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.QtItens)
             </th>
             <th>
@@ -32,12 +29,12 @@
                 <td>
                     <figure class="media">
                         <div class="img-wrap">
-                            <img alt="Thumbnail [300x300]" style="width: 70px; height: 70px;" src="@item.Imagem">
+                            <img alt="Thumbnail [300x300]" style="width: 70px; height: 100px;" src="@item.Imagem">
                         </div>
+                        <figcaption class="media-body" style="margin-left:1vw;">
+                            <h6 class="title text-truncate" style="font-size:larger">   @item.Titulo_liv</h6>
+                        </figcaption>
                     </figure>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Titulo_liv)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.QtItens)

@@ -4,19 +4,13 @@
     ViewData["Title"] = "Detalhes";
 }
 
-<h1>Detalhes do Pedido</h1>
+<h1>Detalhes do Pedido @ViewData["Nm_ped"]</h1>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                Capa do Livro
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Id_pedido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Titulo_liv)
+                Produto
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.QtItens)
@@ -33,15 +27,12 @@
                 <td>
                     <figure class="media">
                         <div class="img-wrap">
-                            <img alt="Thumbnail [300x300]" style="width: 70px; height: 70px;" src="@item.Imagem">
+                            <img alt="Thumbnail [300x300]" style="width: 70px; height: 100px;" src="@item.Imagem">
                         </div>
+                        <figcaption class="media-body" style="margin-left:1vw;">
+                            <h6 class="title text-truncate" style="font-size:larger">   @item.Titulo_liv</h6>
+                        </figcaption>
                     </figure>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id_pedido)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Titulo_liv)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.QtItens)
