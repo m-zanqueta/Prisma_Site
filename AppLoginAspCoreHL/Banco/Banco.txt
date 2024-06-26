@@ -92,11 +92,15 @@ livros.Id_liv,
 livros.titulo_liv,
 livros.Image_liv,
 livros.Preco_liv,
-livros.Desc_liv,
 livros.Autor_liv,
 livros.Situacao_liv,
+livros.Id_cat,
 categoria.nm_cat
 from livros inner join categoria on livros.Id_cat = categoria.Id_CAT;
+
+SELECT Id_liv, titulo_liv, Preco_liv, Image_liv 
+FROM pesquisaLivro 
+WHERE Id_cat = 2 AND Situacao_liv = 'H';
 
 
 
