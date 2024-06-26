@@ -165,6 +165,8 @@ END $$
 insert into administrador values(default, "Lorenzo", "lorenzo@admin.com", "admin00", "G");
 insert into administrador values(default, "Henrique", "henrique@admin.com", "admin01", "C");
 
+call pcd_cadUsu("Matheus", "matheuszanqueta20@gmail.com", "123456", "2012/02/04", "222.333.444-55", "(11) 99999-1010");
+
 insert into categoria values (default, "Romance");
 insert into categoria values (default, "Terror");
 insert into categoria values (default, "Aventura");
