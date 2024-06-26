@@ -29,7 +29,7 @@
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             @foreach (var livro in Model)
             {
-                <div class="col mb-5">
+                <div class="col mb-5" style="width:calc(100%/4)">
                     <div class="card h-100">
                         <!-- Product image-->
                         <a asp-controller="Home" asp-action="Detalhes" asp-route-id="@livro.Id_liv" style="color:black"> <img class="card-img-top" style="height: 25vw" src="@livro.Image_liv" /></a>
@@ -38,22 +38,22 @@
                             <div class="text-center">
                                 <!-- Product name-->
                                 <h5 class="fw-bolder" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                                    <a asp-controller="Home" asp-action="Detalhes" asp-route-id="@livro.Id_liv" style="color: black">@livro.Titulo_liv</a>
+                                    <a asp-controller="Home" asp-action="Detalhes" asp-route-id="@livro.Id_liv" style="color: black;">@livro.Titulo_liv</a>
                                 </h5>
                                 <!-- Product price-->
-                                <div style="float: left">
-                                    <div style="margin-top: 1vw">
+                                <div style="float:left">
+                                    <div style="margin-top: 1vw;">
                                         @for (var i = 1; i <= 3; i++)
                                         {
                                             <span class="fa fa-star checked"></span>
                                         }
 
-                                        @for (var o= 1; o <= 2; o++)
+                                        @for (var o = 1; o <= 2; o++)
                                         {
                                             <span class="fa fa-star"></span>
                                         }
                                     </div>
-                                    <div style="margin-top: 1vw; width: 4.1vw">@livro.Preco_liv.ToString("C")</div>
+                                    <div style="margin-top: 1vw; margin-left: -2vw">@livro.Preco_liv.ToString("C")</div>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                             {
                                 <input type="hidden" name="id" value=@livro.Id_liv>
                                 <input type="hidden" name="quantidade" value="1">
-                                <button type="submit" class="btn btn-primary btn-acao-primario" style="background-color:#7D95FF; border-color:#7D95FF ; transition: transform 1.5s";>Adicionar</button>
+                                <button type="submit" class="btn btn-primary btn-acao-primario" style="background-color:#7D95FF; border-color:#7D95FF ; transition: transform 1.5s" ;>Adicionar</button>
                             }
                         </div>
                     </div>

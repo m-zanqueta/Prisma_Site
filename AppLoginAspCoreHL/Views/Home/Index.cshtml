@@ -81,11 +81,11 @@
                             <div class="text-center">
                                 <!-- Product name-->
                                 <h5 class="fw-bolder" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                                    <a asp-controller="Home" asp-action="Detalhes" asp-route-id="@item.Id" style="color: black">"@item.Titulo"</a>
+                                    <a asp-controller="Home" asp-action="Detalhes" asp-route-id="@item.Id" style="color: black;">@item.Titulo</a>
                                 </h5>
                                 <!-- Product price-->
-                                <div style="text-align:center">
-                                    <div style="margin-top: 1vw">
+                                <div style="float: left">
+                                    <div style="margin-top: 1vw;">
                                         @for (var i = 1; i <= 3; i++)
                                         {
                                             <span class="fa fa-star checked"></span>
@@ -96,7 +96,7 @@
                                             <span class="fa fa-star"></span>
                                         }
                                     </div>
-                                    <div style="margin-top: 1vw;">@item.Preco.ToString("C")</div>
+                                    <div style="margin-top: 1vw;margin-left:-2vw">@item.Preco.ToString("C")</div>
                                 </div>
                             </div>
                         </div>
@@ -140,11 +140,11 @@
                             <div class="text-center">
                                 <!-- Product name-->
                                 <h5 class="fw-bolder" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                                    <a asp-controller="Home" asp-action="Detalhes" asp-route-id="@item.Id" style="color: black">"@item.Titulo"</a>
+                                    <a asp-controller="Home" asp-action="Detalhes" asp-route-id="@item.Id" style="color: black;">@item.Titulo</a>
                                 </h5>
                                 <!-- Product price-->
-                                <div style="text-align:center">
-                                    <div style="margin-top: 1vw">
+                                <div style="float:left">
+                                    <div style="margin-top: 1vw;">
                                         @for (var i = 1; i <= 3; i++)
                                         {
                                             <span class="fa fa-star checked"></span>
@@ -155,7 +155,7 @@
                                             <span class="fa fa-star"></span>
                                         }
                                     </div>
-                                    <div style="margin-top: 1vw;">@item.Preco.ToString("C")</div>
+                                    <div style="margin-top: 1vw; margin-left: -2vw">@item.Preco.ToString("C")</div>
                                 </div>
                             </div>
                         </div>
