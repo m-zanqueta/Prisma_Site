@@ -13,37 +13,33 @@
 > com a necessidade de um site (desenvolvido em asp.net com a linguagem C#) para catalogar e vender seus livros.
 > Espero que goste!
 
-### Ajustes e melhorias
+## ☕ Apresentação
 
-## 💻 Pré-requisitos
-
-Antes de começar, verifique se você atendeu aos seguintes requisitos:
-
-- Você instalou a versão mais recente de `<html / css / javascript / C#>`
-- Você tem uma máquina `<Windows / Linux / Mac>`.
-- Você leu `<guia / link / documentação_relacionada_ao_projeto>`.
-
-## 🚀 Instalando <nome_do_projeto>
-
-Para instalar o <nome_do_projeto, siga estas etapas:
-
-```
-<comando_de_instalação>
-```
-
-## ☕ Usando <nome_do_projeto>
-
-Para usar <nome_do_projeto>, siga estas etapas:
+Vídeo apresentativo sobre o projeto:
 
 ```
 <exemplo_de_uso>
 ```
 
-Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Forneça uma referência de opções para pontos de bônus!
+## 💻 Pré-requisitos
 
-## 📫 Contribuindo para <nome_do_projeto>
+Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
-Para contribuir com <nome_do_projeto>, siga estas etapas:
+- Você instalou a versão mais recente de `<html / css / javascript / C# / asp.net>`
+- Você tem uma máquina `<Windows / Linux / Mac>`.
+- Você leu `<guia / link / documentação_relacionada_ao_projeto>`.
+
+## 🚀 Instalando o Projeto
+
+Para instalar o site da Prisma, siga estas etapas:
+
+```
+<comando_de_instalação>
+```
+
+## 📫 Contribuindo para o projeto
+
+Para contribuir com a Prisma, siga estas etapas:
 
 1. Bifurque este repositório.
 2. Crie um branch: `git checkout -b <nome_branch>`.
