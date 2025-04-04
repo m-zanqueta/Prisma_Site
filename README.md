@@ -1,4 +1,4 @@
-# Nome do projeto
+# Livraria Prisma - Site
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/m-zanqueta/Prisma_Site?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/m-zanqueta/Prisma_Site?style=for-the-badge)
@@ -8,7 +8,10 @@
 
 <img src="imagem.png" alt="Exemplo imagem">
 
-> Linha adicional de texto informativo sobre o que o projeto faz. Sua introdução deve ter cerca de 2 ou 3 linhas. Não exagere, as pessoas não vão ler.
+> O site da Livraria Prisma, a mais renomada no campo da leitura.
+> Desenvolvida durante o TCC do curso de Desenvolvimento de Sistemas da ETEC Prof. Basilides de Godoy, a Prisma se trata de uma empresa ficticia
+> com a necessidade de um site (desenvolvido em asp.net com a linguagem C#) para catalogar e vender seus livros.
+> Espero que goste!
 
 ### Ajustes e melhorias
 
@@ -50,9 +53,7 @@ Para contribuir com <nome_do_projeto>, siga estas etapas:
 
 Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-## 🤝 Colaboradores
-
-Agradecemos às seguintes pessoas que contribuíram para este projeto:
+## 🤝 Desenvolvedores
 
 <table>
   <tr>
@@ -77,6 +78,30 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
         <img src="https://avatars.githubusercontent.com/u/143631388" width="100px;" alt="Foto do Steve Jobs"/><br>
         <sub>
           <b>Lorenzo Ferrari</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/m-zanqueta" title="defina o título do link">
+        <img src="https://avatars.githubusercontent.com/u/164265012?v=4" width="100px;" alt="Foto do Iuri Silva no GitHub"/><br>
+        <sub>
+          <b>Matheus Zanqueta</b>
+        </sub>
+      </a>
+    </td>
+      <td align="center">
+      <a href="https://github.com/pbielz" title="defina o título do link">
+        <img src="https://avatars.githubusercontent.com/u/142752191?v=4" width="100px;" alt="Foto do Iuri Silva no GitHub"/><br>
+        <sub>
+          <b>Pedro Gabriel</b>
+        </sub>
+      </a>
+    </td>
+      <td align="center">
+      <a href="https://github.com/victormlaker" title="defina o título do link">
+        <img src="https://avatars.githubusercontent.com/u/137333821?v=4" width="100px;" alt="Foto do Iuri Silva no GitHub"/><br>
+        <sub>
+          <b>Victor Mlaker</b>
         </sub>
       </a>
     </td>
