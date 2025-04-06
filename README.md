@@ -6,7 +6,9 @@
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/m-zanqueta/Prisma_Site?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/m-zanqueta/Prisma_Site?style=for-the-badge)
 
-<img src="imagem.png" alt="Exemplo imagem">
+
+<img src="https://github.com/user-attachments/assets/e52d2376-bdd8-43bc-98ac-5799331bcc0e" width="300px;" alt="Foto do Iuri Silva no GitHub"/><br>
+
 
 > Desenvolvida durante o TCC do curso de Desenvolvimento de Sistemas da ETEC Prof. Basilides de Godoy, a Prisma se trata de uma empresa ficticia
 > com a necessidade de um site (desenvolvido em asp.net) para catalogar e vender seus livros.
