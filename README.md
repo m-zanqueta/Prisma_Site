@@ -17,7 +17,7 @@
 Vídeo apresentativo sobre o projeto:
 
 ```
-<exemplo_de_uso>
+<Vídeo original: https://drive.google.com/file/d/1SDK9HXW6jzKruM0wkKsIQyIDWBjzmLVt/view?usp=drive_link>
 ```
 
 ## 💻 Pré-requisitos
