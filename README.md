@@ -108,4 +108,4 @@ Como alternativa, consulte a documentação do GitHub em [como criar uma solicit
 
 ## 📝 Licença
 
-Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes. 
+O projeto prisma_site está sob licença. Veja este [arquivo](LICENSE.md) para mais detalhes. 
