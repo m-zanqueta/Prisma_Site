@@ -8,9 +8,8 @@
 
 <img src="imagem.png" alt="Exemplo imagem">
 
-> O site da Livraria Prisma, a mais renomada no campo da leitura.
 > Desenvolvida durante o TCC do curso de Desenvolvimento de Sistemas da ETEC Prof. Basilides de Godoy, a Prisma se trata de uma empresa ficticia
-> com a necessidade de um site (desenvolvido em asp.net com a linguagem C#) para catalogar e vender seus livros.
+> com a necessidade de um site (desenvolvido em asp.net) para catalogar e vender seus livros.
 > Espero que goste!
 
 ## ☕ Apresentação
@@ -25,9 +24,9 @@ Vídeo apresentativo sobre o projeto:
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
-- Você instalou a versão mais recente de `<html / css / javascript / C# / asp.net>`
-- Você tem uma máquina `<Windows / Linux / Mac>`.
-- Você leu `<guia / link / documentação_relacionada_ao_projeto>`.
+- Instalar a versão mais recente de `<html / css / javascript / C# / asp.net>`
+- Ter uma máquina `<Windows / Linux / Mac>`.
+- Ler `<m-zanqueta/Prisma_Site/README.md>`.
 
 ## 🚀 Instalando o Projeto
 
@@ -42,9 +41,9 @@ Para instalar o site da Prisma, siga estas etapas:
 Para contribuir com a Prisma, siga estas etapas:
 
 1. Bifurque este repositório.
-2. Crie um branch: `git checkout -b <nome_branch>`.
+2. Crie um branch: `git checkout -b <prisma_site>`.
 3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'`
-4. Envie para o branch original: `git push origin <nome_do_projeto> / <local>`
+4. Envie para o branch original: `git push origin <prisma_site> / <local>`
 5. Crie a solicitação de pull.
 
 Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
@@ -104,6 +103,7 @@ Como alternativa, consulte a documentação do GitHub em [como criar uma solicit
   </tr>
 </table>
 
+
 ## 📝 Licença
 
-Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
+Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes. 
