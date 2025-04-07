@@ -7,7 +7,7 @@
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/m-zanqueta/Prisma_Site?style=for-the-badge)
 
 
-<img src="https://github.com/user-attachments/assets/e52d2376-bdd8-43bc-98ac-5799331bcc0e" width="300px;" alt="Foto do Iuri Silva no GitHub"/><br>
+<img src="https://github.com/user-attachments/assets/e52d2376-bdd8-43bc-98ac-5799331bcc0e" width="300px;" alt="logo prisma"/><br>
 
 
 > Desenvolvida durante o TCC do curso de Desenvolvimento de Sistemas da ETEC Prof. Basilides de Godoy, a Prisma se trata de uma empresa ficticia
@@ -55,48 +55,48 @@ Como alternativa, consulte a documentação do GitHub em [como criar uma solicit
 <table>
   <tr>
     <td align="center">
-      <a href="https://github.com/evyvitu" title="defina o título do link">
-        <img src="https://avatars.githubusercontent.com/u/164200279" width="100px;" alt="Foto do Iuri Silva no GitHub"/><br>
+      <a href="https://github.com/evyvitu" title=link evillyn">
+        <img src="https://avatars.githubusercontent.com/u/164200279" width="100px;" alt="foto evillyn"/><br>
         <sub>
           <b>Evillyn Viturino</b>
         </sub>
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/herqoliveira" title="defina o título do link">
-        <img src="https://avatars.githubusercontent.com/u/137454205" width="100px;" alt="Foto do Mark Zuckerberg"/><br>
+      <a href="https://github.com/herqoliveira" title="link henrique">
+        <img src="https://avatars.githubusercontent.com/u/137454205" width="100px;" alt="foto henrique"/><br>
         <sub>
           <b>Henrique de Oliveira</b>
         </sub>
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/FerrariAggio" title="defina o título do link">
-        <img src="https://avatars.githubusercontent.com/u/143631388" width="100px;" alt="Foto do Steve Jobs"/><br>
+      <a href="https://github.com/FerrariAggio" title="link lorenzo">
+        <img src="https://avatars.githubusercontent.com/u/143631388" width="100px;" alt="foto lorenzo"/><br>
         <sub>
           <b>Lorenzo Ferrari</b>
         </sub>
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/m-zanqueta" title="defina o título do link">
-        <img src="https://avatars.githubusercontent.com/u/164265012?v=4" width="100px;" alt="Foto do Iuri Silva no GitHub"/><br>
+      <a href="https://github.com/m-zanqueta" title="link matheus">
+        <img src="https://avatars.githubusercontent.com/u/164265012?v=4" width="100px;" alt="foto matheus"/><br>
         <sub>
           <b>Matheus Zanqueta</b>
         </sub>
       </a>
     </td>
       <td align="center">
-      <a href="https://github.com/pbielz" title="defina o título do link">
-        <img src="https://avatars.githubusercontent.com/u/142752191?v=4" width="100px;" alt="Foto do Iuri Silva no GitHub"/><br>
+      <a href="https://github.com/pbielz" title="link pedrok">
+        <img src="https://avatars.githubusercontent.com/u/142752191?v=4" width="100px;" alt="foto pedro"/><br>
         <sub>
           <b>Pedro Gabriel</b>
         </sub>
       </a>
     </td>
       <td align="center">
-      <a href="https://github.com/victormlaker" title="defina o título do link">
-        <img src="https://avatars.githubusercontent.com/u/137333821?v=4" width="100px;" alt="Foto do Iuri Silva no GitHub"/><br>
+      <a href="https://github.com/victormlaker" title="foto victor">
+        <img src="https://avatars.githubusercontent.com/u/137333821?v=4" width="100px;" alt="foto victor"/><br>
         <sub>
           <b>Victor Mlaker</b>
         </sub>
