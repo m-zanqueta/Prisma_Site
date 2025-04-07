@@ -35,7 +35,7 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 Para instalar o site da Prisma, siga estas etapas:
 
 ```
-<comando_de_instalação>
+Baixe o repositório e o execute em sua máquina
 ```
 
 ## 📫 Contribuindo para o projeto
