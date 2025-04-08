@@ -19,7 +19,7 @@
 Vídeo apresentativo sobre o projeto:
 
 ```
-<Vídeo original: https://drive.google.com/file/d/1SDK9HXW6jzKruM0wkKsIQyIDWBjzmLVt/view?usp=drive_link>
+Vídeo original: https://drive.google.com/file/d/1SDK9HXW6jzKruM0wkKsIQyIDWBjzmLVt/view?usp=drive_link
 ```
 
 ## 💻 Pré-requisitos
