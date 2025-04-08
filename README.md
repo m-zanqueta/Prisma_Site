@@ -26,7 +26,7 @@ Vídeo original: https://drive.google.com/file/d/1SDK9HXW6jzKruM0wkKsIQyIDWBjzmL
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
-- Instalar a versão mais recente de `<html / css / javascript / C# / asp.net>`
+- Instalar a versão mais recente de `<Html / Css / Javascript / C# / Asp.net>`
 - Ter uma máquina `<Windows / Linux / Mac>`.
 - Ler `<m-zanqueta/Prisma_Site/README.md>`.
 
